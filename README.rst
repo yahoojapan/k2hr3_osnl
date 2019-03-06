@@ -14,7 +14,7 @@ K2HR3 OpenStack Notification Listener
         :alt: Documentation Status
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
-        :target: https://github.com/yahoojapan/k2hr3_osnl/master/LICENSE
+        :target: https://github.com/yahoojapan/k2hr3_osnl/blob/master/LICENSE
 
 
 An OpenStack notification listener for the K2HR3 role-based ACL system developed in Yahoo Japan Corporation.
