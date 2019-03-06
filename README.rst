@@ -23,7 +23,7 @@ An OpenStack notification listener for the K2HR3 role-based ACL system developed
 Overview
 --------
 
-**k2hr3_osnl** is **K2HR3** **O** pen **S** tack **N** otification **L** istener. It is a part of the K2HR3_
+**k2hr3_osnl** is **K2HR3** **O** pen **S** tack **N** otification **L** istener that is a part of the K2HR3_
 system, which is a role-based ACL system developed in `Yahoo Japan Corporation`_.
 
 .. _K2HR3: https://k2hr3.antpick.ax/
@@ -39,7 +39,6 @@ for OpenStack virtual machine instances. Figure 1 shows the relationship between
 .. _OpenStack: https://www.openstack.org/
 .. _oslo.messaging: https://docs.openstack.org/oslo.messaging/latest/
 .. _RabbitMQ: http://www.rabbitmq.com/
-.. _K2HR3: https://k2hr3.antpick.ax/
 
 Fig.1: overview
 
@@ -52,12 +51,11 @@ Document
 https://k2hr3-osnl.readthedocs.io/
 
 
-K2HR3
---------
+K2HR3 - K2Hdkc based Resource and Roles and policy Rules
+--------------------------------------------------------
 
 K2HR3_ is a role-based ACL system developed in `Yahoo Japan Corporation`_.
 
-.. _K2HR3: https://k2hash.antpick.ax/
 .. _`Yahoo Japan Corporation`: https://about.yahoo.co.jp/info/en/company/
 
 
@@ -82,3 +80,4 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
