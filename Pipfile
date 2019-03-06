@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+coverage = "*"
+xmlrunner = "*"
+"flake8" = "*"
+"flake8-docstrings" = "*"
+"pep8-naming" = "*"
+pycodestyle = "*"
+mccabe = "*"
+v = {editable = true,version = "*"}
+sphinx = "*"
+watchdog = "*"
+wheel = "*"
+twine = "*"
+"collective.checkdocs" = "*"
+pylint = {version = ">=2.3.1,<2.3.2"}
+typed-ast = {version = ">=1.3.1,<1.3.2"}
+astroid = {version = ">=2.2.4,<2.2.5"}
+mypy = {version = ">=0.670,<0.671"}
+
+[packages]
+oslo-config = "*"
+oslo-messaging = "*"

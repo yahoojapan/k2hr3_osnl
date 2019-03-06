@@ -1,0 +1,85 @@
+{
+    "ctxt" : {
+        "auth_token": "auth_token_string", 
+        "client_timeout": null, 
+        "domain": null, 
+        "global_request_id": null, 
+        "is_admin": true, 
+        "is_admin_project": true, 
+        "project": "project_string", 
+        "project_domain": "default", 
+        "project_id": "project_string", 
+        "project_name": "admin", 
+        "read_only": false, 
+        "request_id": "req-ffffffff-ffff-ffff-ffff-ffffffffffff", 
+        "resource_uuid": null, 
+        "roles": [
+            "reader", 
+            "member", 
+            "admin"
+        ], 
+        "show_deleted": false, 
+        "system_scope": null, 
+        "tenant": "project_string", 
+        "tenant_id": "project_string", 
+        "tenant_name": "admin", 
+        "timestamp": "2018-10-26 23:59:59.999999", 
+        "user": "userffffffffffffffffffffffffffff", 
+        "user_domain": "default", 
+        "user_id": "userffffffffffffffffffffffffffff", 
+        "user_identity": "userffffffffffffffffffffffffffff project_string - default default", 
+        "user_name": "admin"
+    },
+    "publisher_id" : "network.node1.example.com",
+    "event_type" : "port.delete.end",
+    "metadata" : {
+        "message_id": "msgidfff-ffff-ffff-ffff-ffffffffffff", 
+        "timestamp": "2018-10-26 23:59:59.999999"
+    },
+    "payload" : {
+        "port": {
+            "admin_state_up": true, 
+            "allowed_address_pairs": [], 
+            "binding:host_id": "node1.example.com", 
+            "binding:profile": {}, 
+            "binding:vif_details": {
+                "bridge_name": "br-int", 
+                "datapath_type": "system", 
+                "ovs_hybrid_plug": false, 
+                "port_filter": true
+            }, 
+            "binding:vif_type": "ovs", 
+            "binding:vnic_type": "normal", 
+            "created_at": "2018-10-26T23:59:59Z", 
+            "description": "", 
+            "device_id": "12345678-1234-5678-1234-567812345678", 
+            "device_owner": "compute:nova", 
+            "extra_dhcp_opts": [], 
+            "fixed_ips": [
+                {
+                    "ip_address": "172.16.0.1", 
+                    "subnet_id": "subnet01-ffff-ffff-ffff-ffffffffffff"
+                }, 
+                {
+                    "ip_address": "2001:db8::6", 
+                    "subnet_id": "subnet02-ffff-ffff-ffff-ffffffffffff"
+                }
+            ], 
+            "id": "portidff-ffff-ffff-ffff-ffffffffffff", 
+            "mac_address": "12:34:56:78:9a:bc", 
+            "name": "", 
+            "network_id": "netwrkid-ffff-ffff-ffff-ffffffffffff", 
+            "port_security_enabled": true, 
+            "project_id": "project_string", 
+            "revision_number": 4, 
+            "security_groups": [
+                "security-ffff-ffff-ffff-ffffffffffff"
+            ], 
+            "status": "ACTIVE", 
+            "tags": [], 
+            "tenant_id": "project_string", 
+            "updated_at": "2018-10-26T23:59:59Z"
+        }, 
+        "port_id": "portidff-ffff-ffff-ffff-ffffffffffff"
+    }
+}

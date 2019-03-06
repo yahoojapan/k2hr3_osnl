@@ -1,0 +1,134 @@
+{
+    "ctxt" : {
+        "auth_token": "auth_token_string", 
+        "client_timeout": null, 
+        "domain": null, 
+        "global_request_id": null, 
+        "is_admin": true, 
+        "is_admin_project": true, 
+        "project": "project_string", 
+        "project_domain": "default", 
+        "project_id": "project_string", 
+        "project_name": "admin", 
+        "quota_class": null, 
+        "read_deleted": "no", 
+        "read_only": false, 
+        "remote_address": "172.16.0.0.1", 
+        "request_id": "req-ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "resource_uuid": null, 
+        "roles": [
+            "reader", 
+            "member", 
+            "admin"
+        ], 
+        "service_catalog": [
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/placement", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "placement", 
+                "type": "placement"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1:9696/", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "neutron", 
+                "type": "network"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/volume/v3/project_string", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "cinderv3", 
+                "type": "volumev3"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/image", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "glance", 
+                "type": "image"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/volume/v3/project_string", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "cinder", 
+                "type": "block-storage"
+            }
+        ], 
+        "show_deleted": false, 
+        "system_scope": null, 
+        "tenant": "project_string", 
+        "timestamp": "2018-10-26T23:59:49.739983", 
+        "user": "user_fffffffffffffffffffffffffff", 
+        "user_domain": "default", 
+        "user_id": "user_fffffffffffffffffffffffffff", 
+        "user_identity": "user_fffffffffffffffffffffffffff project_string - default default", 
+        "user_name": "admin"
+    },
+    "publisher_id" : "compute.node1.example.com",
+    "event_type" : "compute.instance.delete.end",
+    "metadata" : {
+        "message_id": "mssageid-ffff-ffff-ffff-ffffffffffff", 
+        "timestamp": "2018-10-26 23:59:56.792042"
+    },
+    "payload" : {
+        "access_ip_v4": null, 
+        "access_ip_v6": null, 
+        "architecture": null, 
+        "availability_zone": "nova", 
+        "cell_name": "", 
+        "created_at": "2018-10-26 23:59:10+00:00", 
+        "deleted_at": "2018-10-26T23:59:56.000000", 
+        "disk_gb": 0, 
+        "display_name": "coffee1426.example.com", 
+        "ephemeral_gb": 0, 
+        "host": "node1.example.com", 
+        "hostname": "coffee1426.example.com", 
+        "image_meta": {
+            "base_image_ref": "", 
+            "container_format": "bare", 
+            "disk_format": "qcow2", 
+            "min_disk": "0", 
+            "min_ram": "0"
+        }, 
+        "image_ref_url": "http://172.16.0.0.1/image/images/", 
+        "instance_flavor_id": "42", 
+        "instance_id": "12345678-1234-5678-1234-567812345678", 
+        "instance_type": "m1.nano", 
+        "instance_type_id": 11, 
+        "kernel_id": "", 
+        "launched_at": "2018-10-26T23:59:22.000000", 
+        "memory_mb": 64, 
+        "metadata": {}, 
+        "node": "node1.example.com", 
+        "os_type": null, 
+        "progress": "", 
+        "ramdisk_id": "", 
+        "reservation_id": "r-ffffffff", 
+        "root_gb": 0, 
+        "state": "deleted", 
+        "state_description": "", 
+        "tenant_id": "project_string", 
+        "terminated_at": "2018-10-26T23:59:56.500934", 
+        "user_id": "user_fffffffffffffffffffffffffff", 
+        "vcpus": 1
+    }
+}

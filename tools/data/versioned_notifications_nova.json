@@ -1,0 +1,167 @@
+{
+    "ctxt" : {
+        "auth_token": "auth_token_string", 
+        "client_timeout": null, 
+        "domain": null, 
+        "global_request_id": null, 
+        "is_admin": true, 
+        "is_admin_project": true, 
+        "project": "project_string", 
+        "project_domain": "default", 
+        "project_id": "project_string", 
+        "project_name": "admin", 
+        "quota_class": null, 
+        "read_deleted": "no", 
+        "read_only": false, 
+        "remote_address": "172.16.0.0.1", 
+        "request_id": "req-ffffffff-ffff-ffff-ffff-ffffffffffff", 
+        "resource_uuid": null, 
+        "roles": [
+            "reader", 
+            "member", 
+            "admin"
+        ], 
+        "service_catalog": [
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/placement", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "placement", 
+                "type": "placement"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1:9696/", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "neutron", 
+                "type": "network"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/volume/v3/project_string", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "cinderv3", 
+                "type": "volumev3"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/image", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "glance", 
+                "type": "image"
+            }, 
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "http://172.16.0.0.1/volume/v3/project_string", 
+                        "region": "RegionOne"
+                    }
+                ], 
+                "name": "cinder", 
+                "type": "block-storage"
+            }
+        ], 
+        "show_deleted": false, 
+        "system_scope": null, 
+        "tenant": "project_string", 
+        "timestamp": "2018-10-26T23:59:59.999999", 
+        "user": "user_fffffffffffffffffffffffffff", 
+        "user_domain": "default", 
+        "user_id": "user_fffffffffffffffffffffffffff", 
+        "user_identity": "user_fffffffffffffffffffffffffff project_string - default default", 
+        "user_name": "admin"
+    },
+    "publisher_id" : "nova-compute:node1.example.com",
+    "event_type" : "instance.delete.end",
+    "metadata" : {
+        "message_id": "mssageid-ffff-ffff-ffff-ffffffffffff", 
+        "timestamp": "2018-10-26 23:59:59.999999"
+    },
+    "payload" : {
+        "nova_object.data": {
+            "action_initiator_project": "project_string", 
+            "action_initiator_user": "user_fffffffffffffffffffffffffff", 
+            "architecture": null, 
+            "auto_disk_config": "AUTO", 
+            "availability_zone": "nova", 
+            "block_devices": [
+                {
+                    "nova_object.data": {
+                        "boot_index": 0, 
+                        "delete_on_termination": true, 
+                        "device_name": "/dev/vda", 
+                        "tag": null, 
+                        "volume_id": "volumeid-ffff-ffff-ffff-ffffffffffff"
+                    }, 
+                    "nova_object.name": "BlockDevicePayload", 
+                    "nova_object.namespace": "nova", 
+                    "nova_object.version": "1.0"
+                }
+            ], 
+            "created_at": "2018-10-26T23:59:99Z", 
+            "deleted_at": "2018-10-26T23:59:45Z", 
+            "display_description": null, 
+            "display_name": "coffee1421.example.com", 
+            "fault": null, 
+            "flavor": {
+                "nova_object.data": {
+                    "description": null, 
+                    "disabled": false, 
+                    "ephemeral_gb": 0, 
+                    "extra_specs": {}, 
+                    "flavorid": "42", 
+                    "is_public": true, 
+                    "memory_mb": 64, 
+                    "name": "m1.nano", 
+                    "projects": null, 
+                    "root_gb": 0, 
+                    "rxtx_factor": 1.0, 
+                    "swap": 0, 
+                    "vcpu_weight": 0, 
+                    "vcpus": 1
+                }, 
+                "nova_object.name": "FlavorPayload", 
+                "nova_object.namespace": "nova", 
+                "nova_object.version": "1.4"
+            }, 
+            "host": "node1.example.com", 
+            "host_name": "coffee1421.example.com", 
+            "image_uuid": "", 
+            "ip_addresses": [], 
+            "kernel_id": "", 
+            "key_name": null, 
+            "launched_at": "2018-10-26T23:59:00Z", 
+            "locked": false, 
+            "metadata": {}, 
+            "node": "node1.example.com", 
+            "os_type": null, 
+            "power_state": "pending", 
+            "progress": 0, 
+            "ramdisk_id": "", 
+            "request_id": "req-ffffffff-ffff-ffff-ffff-ffffffffffff", 
+            "reservation_id": "r-ffffffff", 
+            "state": "deleted", 
+            "task_state": null, 
+            "tenant_id": "project_string", 
+            "terminated_at": "2018-10-26T23:59:44Z", 
+            "updated_at": "2018-10-26T23:59:44Z", 
+            "user_id": "user_fffffffffffffffffffffffffff", 
+            "uuid": "12345678-1234-5678-1234-567812345678"
+        }, 
+        "nova_object.name": "InstanceActionPayload", 
+        "nova_object.namespace": "nova", 
+        "nova_object.version": "1.7"
+    }
+}
