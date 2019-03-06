@@ -107,7 +107,7 @@ setup(
     packages=find_packages(include=['k2hr3_osnl']),
     project_urls={
         'Bugs': 'https://github.com/yahoojapan/k2hr3_osnl/issues',
-        'Docs': 'https://github.com/yahoojapan/k2hr3_osnl/wiki',
+        'Docs': 'https://k2hr3-osnl.readthedocs.io/en/latest/',
         'Source': 'https://github.com/yahoojapan/k2hr3_osnl',
     },
     python_requires='>=3.5',
