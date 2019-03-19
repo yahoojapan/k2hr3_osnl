@@ -7,7 +7,7 @@ K2HR3 OpenStack Notification Listener
         :target: https://pypi.org/project/k2hr3-osnl
 
 .. image:: https://img.shields.io/travis/yahoojapan/k2hr3_osnl.svg
-        :target: https://travis-ci.com/yahoojapan/k2hr3_osnl
+        :target: https://travis-ci.org/yahoojapan/k2hr3_osnl
 
 .. image:: https://readthedocs.org/projects/k2hr3-osnl/badge/?version=latest
         :target: https://k2hr3-osnl.readthedocs.io/en/latest/?badge=latest
