@@ -6,7 +6,7 @@ After=network-online.target
 Type=simple
 User=k2hr3
 PermissionsStartOnly=true
-ExecStart=/usr/bin/k2hr3-osnl -conf /etc/k2hr3/k2hr3-osnl.conf
+ExecStart=/usr/bin/k2hr3-osnl -c /etc/k2hr3/k2hr3-osnl.conf
 Restart=on-failure
 PIDFile=/var/run/k2hr3-osnl.pid
 
