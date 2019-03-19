@@ -17,12 +17,12 @@ notifications from OpenStack services. When catching a notification, it
 sends the notification payload to K2HR3, the OpenStack role-based ACL 
 system developed by Yahoo Japan Corporation.
 
-%package -n python%{python3_pkgversion}-%{pypi_name}
+%package -n python3-%{pypi_name}
 Summary:	%{summary}
 BuildRequires:	git
-BuildRequires:	python%{python3_pkgversion}-devel
-BuildRequires:	python%{python3_pkgversion}-oslo-config
-BuildRequires:	python%{python3_pkgversion}-oslo-messaging
+BuildRequires:	python3-devel
+BuildRequires:	python3-oslo-config
+BuildRequires:	python3-oslo-messaging
 BuildRequires:	help2man
 %if 0%{?fedora} >= 30
 BuildRequires:	systemd-rpm-macros
@@ -30,13 +30,14 @@ BuildRequires:	systemd-rpm-macros
 BuildRequires:	systemd
 %endif 
 %{?systemd_requires}
-# Fedora uses the python3 prefix. EPEL uses python the python prefix
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{pypi_name}}
+%{?python_provide:%python_provide python3-%{srcname}}
 
-Requires:	python%{python3_pkgversion}-oslo-messaging >= 5.17.1
-Requires:	python%{python3_pkgversion}-oslo-config >= 5.2.0
+# python3-oslo-messaging found. python3x-oslo-messaging not found.
+# Tested with OpenStack rocky on fc29
+Requires:	python3-oslo-messaging >= 5.35.1
+Requires:	python3-oslo-config >= 5.2.0
 
-%description -n python%{python3_pkgversion}-%{pypi_name}
+%description -n python3-%{pypi_name}
 k2hr3_osnl is an OpenStack Notification Listener, which listens to 
 notifications from OpenStack services. When catching a notification, it 
 sends the notification payload to K2HR3, the OpenStack role-based ACL 
@@ -70,7 +71,7 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %check
 %{__python3} -m unittest
 
-%files -n python%{python3_pkgversion}-%{pypi_name}
+%files -n python3-%{pypi_name}
 %dir %attr(0755,root,root) %{_sysconfdir}/k2hr3/
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/k2hr3/k2hr3-osnl.conf
 %doc README.rst
@@ -88,9 +89,8 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 
 %changelog
 * Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.0-2
-- Tested with minimum required version of oslo libraries
-- Used the config(noreplace) to preserve the previous configuration file
-- Used the python3_pkgversion macro for EPEL
+- Used the config(noreplace) to preserve the previous config file
+- Tested on fc29 and updated oslo library versions
 
 * Wed Mar 6 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.0-1
 - Initial Version
