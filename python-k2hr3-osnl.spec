@@ -1,7 +1,7 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	0.9.0
+Version:	0.9.1
 Release:	2%{?dist}
 Summary:	An OpenStack notification listener for K2HR3
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
+* Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-1
+- Fixed systemd unitfile
+
 * Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.0-2
 - Used the config(noreplace) to preserve the previous config file
 - Tested on fc29 and updated oslo library versions
