@@ -65,29 +65,27 @@ mkdir -p -m755 %{buildroot}%{_unitdir}
 mkdir -p -m755 %{buildroot}%{_mandir}/man1
 install -pm 644 etc/k2hr3-osnl.conf %{buildroot}%{_sysconfdir}/k2hr3/k2hr3-osnl.conf
 install -pm 644 k2hr3-osnl.service %{buildroot}%{_unitdir}/k2hr3-osnl.service
-help2man --no-discard-stderr --version-string=%{version} %{buildroot}/usr/bin/k2hr3-osnl > %{buildroot}%{_mandir}/man1/k2hr3-osnl.1
+help2man --no-discard-stderr --version-string=%{version} %{buildroot}%{_bindir}/k2hr3-osnl > %{buildroot}%{_mandir}/man1/k2hr3-osnl.1
 rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 
 %check
 %{__python3} -m unittest
 
 %files -n python3-%{pypi_name}
-%dir %attr(0755,root,root) %{_sysconfdir}/k2hr3/
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/k2hr3/k2hr3-osnl.conf
+%dir %{_sysconfdir}/k2hr3/
+%config(noreplace) %{_sysconfdir}/k2hr3/k2hr3-osnl.conf
 %doc README.rst
 %license LICENSE
 %{_bindir}/k2hr3-osnl
 %{python3_sitelib}/%{srcname}
 %{python3_sitelib}/*.egg-info
-%{_sysconfdir}/k2hr3
-%if 0%{?fedora} >= 30
 %{_unitdir}/k2hr3-osnl.service
-%else
-%{_unitdir}/k2hr3-osnl.service
-%endif
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
+* Wed Mar 20 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-2
+- Removed redundant lines
+
 * Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-1
 - Fixed systemd unitfile
 
