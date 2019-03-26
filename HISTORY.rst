@@ -2,6 +2,12 @@
 History
 =======
 
+0.9.2 (2019-03-26)
+-------------------
+
+* Fix systemd unitfile for FHS v3
+* Fix RPM specfile for the indicated items on Fedora Review No.1663668
+
 0.9.1 (2019-03-19)
 -------------------
 

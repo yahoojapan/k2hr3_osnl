@@ -1,8 +1,8 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	0.9.1
-Release:	2%{?dist}
+Version:	0.9.2
+Release:	1%{?dist}
 Summary:	An OpenStack notification listener for K2HR3
 
 License:	MIT
@@ -83,6 +83,9 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
+* Tue Mar 26 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.2-1
+- Update for Release Version 0.9.2
+
 * Wed Mar 20 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-2
 - Removed redundant lines
 
