@@ -341,7 +341,7 @@ class _K2hr3UserAgent:
         LOG.debug('_send called by url %s params %s headers %s method %s', url,
                   params, headers, method)
 
-        qstring = urllib.parse.urlencode(params, quote_via=urllib.parse.quote)
+        qstring = urllib.parse.urlencode(params, quote_via=urllib.parse.quote)  # type: ignore
         req = urllib.request.Request(
             '?'.join([url, qstring]), headers=headers, method=method)
         if req.type not in ('http', 'https'):
