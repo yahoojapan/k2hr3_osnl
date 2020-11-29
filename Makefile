@@ -81,6 +81,7 @@ lint: ## check style with flake8
 	flake8 k2hr3_osnl tests
 	mypy k2hr3_osnl tests
 	pylint k2hr3_osnl tests --py3k -r n
+	python3 -m pip install collective.checkdocs
 	python3 setup.py checkdocs
 
 test: ## run tests quickly with the default Python
