@@ -207,7 +207,7 @@ class _K2hr3UserAgent:
             ipaddress = socket.gethostbyname(domain)
         except OSError as error:  # resolve failed
             raise _K2hr3UserAgentError('unresolved domain, {} {}'.format(
-                domain, error))
+                domain, error)) from k2hr3_osnl.exceptions
         else:
             LOG.debug('%s resolved %s', domain, ipaddress)
 
@@ -264,7 +264,7 @@ class _K2hr3UserAgent:
                               ipaddress, error)
                     raise _K2hr3UserAgentError(
                         'ip must be valid string, not {} {}'.format(
-                            ipaddress, error))
+                            ipaddress, error)) from k2hr3_osnl.exceptions
         self._ips = ips  # overwrite
         LOG.debug('ips=%s', ips)
         # Note:
@@ -296,7 +296,7 @@ class _K2hr3UserAgent:
                 self._instance_id = value
         except ValueError as error:
             raise _K2hr3UserAgentError('Invalid UUID, {} {}'.format(
-                value, error))
+                value, error)) from k2hr3_osnl.exceptions
         # Note:
         # parameter name is 'cuk' when calling r3api.
         self._params['cuk'] = self._instance_id
