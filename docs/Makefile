@@ -22,7 +22,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = python3 -msphinx
+SPHINXBUILD   = pipenv run python3 -msphinx
 SPHINXPROJ    = k2hr3_osnl
 SOURCEDIR     = .
 BUILDDIR      = _build

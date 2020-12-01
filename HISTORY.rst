@@ -2,6 +2,16 @@
 History
 =======
 
+0.9.5 (2020-12-01)
+-------------------
+
+* Removes the --user option from pip command
+
+0.9.4 (2020-12-01)
+-------------------
+
+* Changes CI from Travis to GitHub Actions
+
 0.9.3 (2020-11-30)
 -------------------
 

@@ -18,6 +18,9 @@ astroid = {version = ">=2.4.2,<2.4.3"}
 typed-ast = {version = ">=1.4.1,<1.4.2"}
 mypy = {version = ">=0.790,<0.791"}
 importlib-metadata = {version = ">=2.1.0,<2.2.0"}
+"collective.checkdocs" = "*"
+argh = {version = ">=0.26.2,<0.26.3"}
+watchdog = {version = ">=0.10.4,<0.10.5"}
 
 [packages]
 oslo-config = "*"
