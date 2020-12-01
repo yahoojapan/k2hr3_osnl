@@ -83,9 +83,6 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
-* Tue Dec 01 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.5-1
-- Update for Release Version 0.9.5
-
 * Tue Dec 01 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.4-1
 - Update for Release Version 0.9.4
 

@@ -54,8 +54,7 @@ help:
 # Note: 
 # Make sure python3-devel or python3-dev is installed. Because oslo-message(or dependent libs) requires Python.h
 init:
-	python3 -m pip install --upgrade pip
-	python3 -m pip install --upgrade pipenv
+	python3 -m pip install --user --upgrade pipenv
 	pipenv install --dev --skip-lock
 	pipenv graph
 	pipenv check
