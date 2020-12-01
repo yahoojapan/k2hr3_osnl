@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]') && ! contains(toJSON(github.event.commits.*.message), '[ci skip]')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.6', '3.7', '3.8']
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        make init
+    - name: Lint with flake8, mypy, pylint and checkdocs
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        make lint
+    - name: Run tests
+      run: |
+        make test
+    - name: Check coverage
+      run: |
+        make coverage
+    - name: Make docs
+      run: |
+        make docs
+    - name: Make dist package
+      run: |
+        make dist
+    - name: Install the package locally
+      run: |
+        make install
