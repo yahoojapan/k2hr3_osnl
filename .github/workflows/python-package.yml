@@ -58,4 +58,4 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       if: github.event_name == 'release'
       run: |
-        make release
+        make test-release
