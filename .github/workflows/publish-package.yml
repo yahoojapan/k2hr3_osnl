@@ -1,4 +1,4 @@
-name: CI
+name: Publish a package to pypi.org
 
 on:
   # Trigger the workflow on release,
