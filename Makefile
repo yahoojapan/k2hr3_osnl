@@ -123,6 +123,8 @@ test: version ## builds source and wheel package
 	@echo 'rpmspec ' ${RPMSPEC_VERSION}
 	@if test "${SOURCE_VERSION}" = "${HISTORY_VERSION}" -a "${HISTORY_VERSION}" = "${RPMSPEC_VERSION}" ; then \
 		pipenv run python3 -m unittest ; \
+	else \
+		exit 1; \
 	fi
 
 test-all: lint test
