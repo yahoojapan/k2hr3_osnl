@@ -2,10 +2,10 @@
 History
 =======
 
-0.9.5 (2020-12-01)
+0.9.6 (2020-12-02)
 -------------------
 
-* Removes the --user option from pip command
+* Adds GitHubActions workflows
 
 0.9.4 (2020-12-01)
 -------------------
