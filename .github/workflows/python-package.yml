@@ -9,6 +9,11 @@ on:
     branches: [ master ]
   schedule:
     - cron:  '0 0 * * 1'
+  # Trigger the workflow on release,
+  # but only when published
+  release:
+    types:
+      - published
 
 jobs:
   build:
@@ -53,4 +58,4 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       if: github.event_name == 'release'
       run: |
-        make test-release
+        make release
