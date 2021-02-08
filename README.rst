@@ -45,18 +45,112 @@ Fig.1: overview
 .. image:: https://raw.githubusercontent.com/yahoojapan/k2hr3_osnl/master/docs/k2hr3_osnl_overview.png
 
 
-Document
+Documents
+----------
+
+Here are documents including other components.
+
+`K2HR3 Document`_
+
+`K2HR3 Web Application Usage`_
+
+`K2HR3 REST API Usage`_
+
+`K2HR3 OpenStack Notification Listener Usage`_
+
+`K2HR3 Watcher Usage`_
+
+`K2HR3 Get Resource Usage`_
+
+`K2HR3 Utilities for Setup`_
+
+`K2HR3 Demonstration`_
+
+`About k2hdkc`_
+
+`About k2hash`_
+
+`About chmpx`_
+
+`About k2hash transaction plugin`_
+
+`About AntPickax`_
+
+
+.. _`K2HR3 Document`: https://k2hr3.antpick.ax/index.html
+.. _`K2HR3 Web Application Usage`: https://k2hr3.antpick.ax/usage_app.html
+.. _`K2HR3 REST API Usage`: https://k2hr3.antpick.ax/api.html
+.. _`K2HR3 OpenStack Notification Listener Usage`: https://k2hr3.antpick.ax/detail_osnl.html
+.. _`K2HR3 Watcher Usage`: https://k2hr3.antpick.ax/tools.html
+.. _`K2HR3 Get Resource Usage`: https://k2hr3.antpick.ax/tools.html
+.. _`K2HR3 Utilities for Setup`: https://k2hr3.antpick.ax/setup.html
+.. _`K2HR3 Demonstration`: https://demo.k2hr3.antpick.ax/
+.. _`About k2hdkc`: https://k2hdkc.antpick.ax/
+.. _`About k2hash`: https://k2hash.antpick.ax/
+.. _`About chmpx`: https://chmpx.antpick.ax/
+.. _`About k2hash transaction plugin`: https://k2htpdtor.antpick.ax/
+.. _`About AntPickax`: https://antpick.ax/
+
+Repositories
+-------------
+
+Here are repositories including other components.
+
+`K2HR3 main repository`_
+
+`K2HR3 Web Application repository`_
+
+`K2HR3 REST API repository`_
+
+`K2HR3 OpenStack Notification Listener`_
+
+`K2HR3 Container Registration Sidecar`_
+
+`K2HR3 Get Resource`_
+
+`k2hdkc`_
+
+`k2hash`_
+
+`chmpx`_ 
+
+`k2hash transaction plugin`_
+
+.. _`K2HR3 main repository`:  https://github.com/yahoojapan/k2hr3
+.. _`K2HR3 Web Application repository`: https://github.com/yahoojapan/k2hr3_app
+.. _`K2HR3 REST API repository`: https://github.com/yahoojapan/k2hr3_api
+.. _`K2HR3 OpenStack Notification Listener`: https://github.com/yahoojapan/k2hr3_osnl
+.. _`K2HR3 Utilities`: https://github.com/yahoojapan/k2hr3_utils
+.. _`K2HR3 Container Registration Sidecar`: https://github.com/yahoojapan/k2hr3_sidecar
+.. _`K2HR3 Get Resource`: https://github.com/yahoojapan/k2hr3_get_resource
+.. _`k2hdkc`: https://github.com/yahoojapan/k2hdkc
+.. _`k2hash`: https://github.com/yahoojapan/k2hash
+.. _`chmpx`: https://github.com/yahoojapan/chmpx
+.. _`k2hash transaction plugin`: https://github.com/yahoojapan/k2htp_dtor
+
+
+Packages
 --------
 
-https://k2hr3-osnl.readthedocs.io/
+Here are packages including other components.
+
+`k2hr3-app(npm packages)`_
+
+`k2hr3-api(npm packages)`_
+
+`k2hr3-osnl(python packages)`_
+
+`k2hr3.sidecar(dockerhub)`_
+
+`k2hr3-get-resource(packages)`_
 
 
-K2HR3 - K2Hdkc based Resource and Roles and policy Rules
---------------------------------------------------------
+.. _`k2hr3-app(npm packages)`:  https://www.npmjs.com/package/k2hr3-app
+.. _`k2hr3-api(npm packages)`:  https://www.npmjs.com/package/k2hr3-api
+.. _`k2hr3-osnl(python packages)`:  https://pypi.org/project/k2hr3-osnl/
+.. _`k2hr3.sidecar(dockerhub)`:  https://hub.docker.com/r/antpickax/k2hr3.sidecar
+.. _`k2hr3-get-resource(packages)`:  https://packagecloud.io/app/antpickax/stable/search?q=k2hr3-get-resource
 
-K2HR3_ is a role-based ACL system developed in `Yahoo Japan Corporation`_.
-
-.. _`Yahoo Japan Corporation`: https://about.yahoo.co.jp/info/en/company/
 
 
 License
