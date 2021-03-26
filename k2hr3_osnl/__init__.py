@@ -32,7 +32,7 @@ __all__ = [
     'version',
 ]
 __author__ = 'Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>'
-__version__ = '0.9.6'
+__version__ = '1.0.0'
 
 import argparse
 import logging

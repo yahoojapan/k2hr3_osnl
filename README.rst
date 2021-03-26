@@ -66,6 +66,8 @@ Here are documents including other components.
 
 `K2HR3 Demonstration`_
 
+`K2HR3 Command Line Interface Usage`_
+
 `About k2hdkc`_
 
 `About k2hash`_
@@ -85,6 +87,7 @@ Here are documents including other components.
 .. _`K2HR3 Get Resource Usage`: https://k2hr3.antpick.ax/tools.html
 .. _`K2HR3 Utilities for Setup`: https://k2hr3.antpick.ax/setup.html
 .. _`K2HR3 Demonstration`: https://demo.k2hr3.antpick.ax/
+.. _`K2HR3 Command Line Interface Usage`: https://k2hr3.antpick.ax/cli.html
 .. _`About k2hdkc`: https://k2hdkc.antpick.ax/
 .. _`About k2hash`: https://k2hash.antpick.ax/
 .. _`About chmpx`: https://chmpx.antpick.ax/
@@ -108,6 +111,8 @@ Here are repositories including other components.
 
 `K2HR3 Get Resource`_
 
+`K2HR3 Command Line Interface`_
+
 `k2hdkc`_
 
 `k2hash`_
@@ -123,6 +128,7 @@ Here are repositories including other components.
 .. _`K2HR3 Utilities`: https://github.com/yahoojapan/k2hr3_utils
 .. _`K2HR3 Container Registration Sidecar`: https://github.com/yahoojapan/k2hr3_sidecar
 .. _`K2HR3 Get Resource`: https://github.com/yahoojapan/k2hr3_get_resource
+.. _`K2HR3 Command Line Interface`: https://github.com/yahoojapan/k2hr3_cli
 .. _`k2hdkc`: https://github.com/yahoojapan/k2hdkc
 .. _`k2hash`: https://github.com/yahoojapan/k2hash
 .. _`chmpx`: https://github.com/yahoojapan/chmpx
