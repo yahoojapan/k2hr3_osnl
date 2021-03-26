@@ -1,7 +1,7 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	0.9.6
+Version:	1.0.0
 Release:	1%{?dist}
 Summary:	An OpenStack notification listener for K2HR3
 
@@ -83,6 +83,9 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
+* Fri Mar 03 2021 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.0-1
+- Update for Release Version 1.0.0
+
 * Tue Dec 02 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.6-1
 - Update for Release Version 0.9.6
 
