@@ -83,13 +83,11 @@ class TestNotificationEndpoint(unittest.TestCase):
 
     def test_notification_endpoint_readonly(self):
         """Checks if conf is readonly."""
-        with self.assertRaises(AttributeError) as cm:
+        with self.assertRaises(AttributeError):
             conf = K2hr3Conf(conf_file_path)
             endpoint = K2hr3NotificationEndpoint(conf)
             new_conf = K2hr3Conf(conf_file_path)
             endpoint.conf = new_conf
-        the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
 
     def test_neutron_payload_to_params(self):
         """Checks if _payload_to_params() works correctly.

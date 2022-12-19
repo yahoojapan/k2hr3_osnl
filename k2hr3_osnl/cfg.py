@@ -25,7 +25,7 @@ import logging
 from pathlib import Path
 from typing import List, Set, Dict, Tuple, Optional  # noqa: pylint: disable=unused-import
 
-from oslo_config import cfg
+from oslo_config import cfg  # type: ignore
 from k2hr3_osnl.exceptions import K2hr3ConfError
 
 LOG = logging.getLogger(__name__)

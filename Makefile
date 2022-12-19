@@ -69,7 +69,7 @@ lint:
 	pipenv run flake8 --version
 	pipenv run flake8 k2hr3_osnl tests
 	pipenv run mypy k2hr3_osnl tests
-	pipenv run pylint k2hr3_osnl tests --py3k -r n
+	pipenv run pylint k2hr3_osnl tests -r n
 	pipenv run python3 setup.py checkdocs
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts

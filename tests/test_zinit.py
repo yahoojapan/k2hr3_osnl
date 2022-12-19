@@ -26,7 +26,7 @@ import unittest
 from pathlib import Path
 from os import path, sep
 from unittest.mock import patch
-import oslo_messaging
+import oslo_messaging  # type: ignore
 
 import k2hr3_osnl
 from k2hr3_osnl.cfg import K2hr3Conf

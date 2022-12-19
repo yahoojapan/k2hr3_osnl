@@ -49,7 +49,7 @@ import os
 import sys
 import unittest
 
-import xmlrunner
+import xmlrunner  # type: ignore
 
 here = os.path.dirname(__file__)
 src_dir = os.path.join(here, '../..')
