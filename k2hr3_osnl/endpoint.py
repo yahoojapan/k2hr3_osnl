@@ -27,7 +27,7 @@ import sys
 import traceback
 from typing import List, Set, Dict, Tuple, Optional, Any  # noqa: pylint: disable=unused-import
 
-from oslo_messaging import NotificationFilter, NotificationResult
+from oslo_messaging import NotificationFilter, NotificationResult  # type: ignore
 
 from k2hr3_osnl.cfg import K2hr3Conf
 from k2hr3_osnl.useragent import _K2hr3UserAgent

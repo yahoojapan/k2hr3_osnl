@@ -33,7 +33,7 @@ class K2hr3Error(Exception):
 class K2hr3ConfError(K2hr3Error):
     """Raised when failed to instantiate a k2hr3Conf class."""
 
-    def __init__(self, msg: str = None):
+    def __init__(self, msg: str = ""):
         """Initializes members."""
         self.msg = msg
 
@@ -41,7 +41,7 @@ class K2hr3ConfError(K2hr3Error):
 class K2hr3NotificationEndpointError(K2hr3Error):
     """Raised when failed to instantiate a K2hr3NotificationEndpoint class."""
 
-    def __init__(self, msg: str = None):
+    def __init__(self, msg: str = ""):
         """Initializes members."""
         self.msg = msg
 
@@ -49,7 +49,7 @@ class K2hr3NotificationEndpointError(K2hr3Error):
 class _K2hr3UserAgentError(K2hr3Error):
     """Raised when failed to send request to K2hr3API in K2hr3Agent class."""
 
-    def __init__(self, msg: str = None):
+    def __init__(self, msg: str = ""):
         """Initializes members."""
         self.msg = msg
 

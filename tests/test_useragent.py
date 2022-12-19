@@ -114,7 +114,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_headers_readonly(self):
         """Checks if headers is readonly."""
-        with self.assertRaises(AttributeError) as cm:
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             new_headers = {
                 'User-Agent':
@@ -122,8 +122,6 @@ class TestK2hr3UserAgent(unittest.TestCase):
                                                sys.version_info[1])
             }
             agent.headers = new_headers
-        the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
 
     def test_k2hr3useragent_params(self):
         """Checks if params."""
@@ -133,12 +131,10 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_params_readonly(self):
         """Checks if params is readonly."""
-        with self.assertRaises(AttributeError) as cm:
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             new_params = {'newkey': 'value'}
             agent.params = new_params
-        the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
 
     def test_k2hr3useragent_code(self):
         """Checks if the code."""
@@ -147,11 +143,9 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_code_readonly(self):
         """Checks if code is readonly."""
-        with self.assertRaises(AttributeError) as cm:
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             agent.code = 204
-        the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
 
     def test_k2hr3useragent_error(self):
         """Checks if errors."""
@@ -160,11 +154,9 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_error_readonly(self):
         """Checks if error is readonly."""
-        with self.assertRaises(AttributeError) as cm:
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             agent.error = 'i am broken'
-        the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
 
     def test_k2hr3useragent_method(self):
         """Checks if method is valid."""

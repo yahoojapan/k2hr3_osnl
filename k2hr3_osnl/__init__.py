@@ -43,8 +43,8 @@ import sys
 import time
 from typing import List, Set, Dict, Tuple, Optional  # noqa: pylint: disable=unused-import
 
-import oslo_config
-import oslo_messaging
+import oslo_config  # type: ignore
+import oslo_messaging  # type: ignore
 
 from k2hr3_osnl.cfg import K2hr3Conf
 from k2hr3_osnl.exceptions import K2hr3Error, K2hr3ConfError, K2hr3NotificationEndpointError
