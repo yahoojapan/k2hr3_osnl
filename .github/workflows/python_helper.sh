@@ -593,8 +593,14 @@ fi
 
 if [ -n "${OPT_TWINE_USERNAME}" ]; then
 	CI_TWINE_USERNAME="${OPT_TWINE_USERNAME}"
-elif [ -n "${ENV_TWINE_PASSWORD}" ]; then
-	CI_TWINE_PASSWORD="${ENV_TWINE_PASSWORD}"
+elif [ -n "${TWINE_USERNAME}" ]; then
+	CI_TWINE_USERNAME="${TWINE_USERNAME}"
+fi
+
+if [ -n "${OPT_TWINE_PASSWORD}" ]; then
+	CI_TWINE_PASSWORD="${OPT_TWINE_PASSWORD}"
+elif [ -n "${TWINE_PASSWORD}" ]; then
+	CI_TWINE_PASSWORD="${TWINE_PASSWORD}"
 fi
 
 # [NOTE] for ubuntu/debian
