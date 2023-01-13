@@ -3,7 +3,7 @@
 #
 # K2HR3 OpenStack Notification Listener
 #
-# Copyright 2018 Yahoo! Japan Corporation.
+# Copyright 2018 Yahoo Japan Corporation
 #
 # K2HR3 is K2hdkc based Resource and Roles and policy Rules, gathers 
 # common management information for the cloud.
@@ -161,5 +161,10 @@ texinfo_documents = [
 ]
 
 #
-# EOF
+# Local variables:
+# tab-width: 4
+# c-basic-offset: 4
+# End:
+# vim600: noexpandtab sw=4 ts=4 fdm=marker
+# vim<600: noexpandtab sw=4 ts=4
 #

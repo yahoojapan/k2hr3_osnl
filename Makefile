@@ -1,7 +1,7 @@
 #
 # K2HR3 OpenStack Notification Listener
 #
-# Copyright 2018 Yahoo! Japan Corporation.
+# Copyright 2018 Yahoo Japan Corporation
 #
 # K2HR3 is K2hdkc based Resource and Roles and policy Rules, gathers 
 # common management information for the cloud.
@@ -168,7 +168,10 @@ install: clean ## install the package to the active Python's site-packages
 	pipenv run python3 setup.py install
 
 #
-# VIM modelines
-#
-# vim:set ts=4 fenc=utf-8:
+# Local variables:
+# tab-width: 4
+# c-basic-offset: 4
+# End:
+# vim600: noexpandtab sw=4 ts=4 fdm=marker
+# vim<600: noexpandtab sw=4 ts=4
 #

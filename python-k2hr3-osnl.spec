@@ -1,7 +1,7 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	1.0.0
+Version:	1.0.1
 Release:	1%{?dist}
 Summary:	An OpenStack notification listener for K2HR3
 
@@ -15,7 +15,7 @@ BuildArch:	noarch
 k2hr3_osnl is an OpenStack Notification Listener, which listens to 
 notifications from OpenStack services. When catching a notification, it 
 sends the notification payload to K2HR3, the OpenStack role-based ACL 
-system developed by Yahoo Japan Corporation.
+system developed by Yahoo Japan Corporation
 
 %package -n python3-%{pypi_name}
 Summary:	%{summary}
@@ -41,7 +41,7 @@ Requires:	python3-oslo-config >= 5.2.0
 k2hr3_osnl is an OpenStack Notification Listener, which listens to 
 notifications from OpenStack services. When catching a notification, it 
 sends the notification payload to K2HR3, the OpenStack role-based ACL 
-system developed by Yahoo Japan Corporation.
+system developed by Yahoo Japan Corporation
 
 %prep
 %autosetup -n %{srcname}-%{version} -S git
@@ -83,6 +83,9 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
+* Fri Jan 13 2023 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.1-1
+- Update for Release Version 1.0.1
+
 * Fri Mar 03 2021 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.0-1
 - Update for Release Version 1.0.0
 

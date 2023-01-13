@@ -16,35 +16,17 @@
 # CREATE:   Tue Sep 11 2018 
 # REVISION:
 #
-
-[DEFAULT]
-#log_file = sys.stderr
-debug_level = error
-#libs_debug_level = warning
-
-[oslo_messaging_notifications]
-event_type = ^port\.delete\.end$
-publisher_id = ^network.*$
-transport_url = rabbit://guest:guest@127.0.0.1:5672/
-topic = notifications
-exchange = neutron
-#executor = threading
-#pool = k2hr3_osnl
-#allow_requeue = True
-
-[k2hr3]
-api_url = https://localhost/v1/role
-#timeout_seconds = 30
-#retries = 3
-#retry_interval_seconds = 60
-#allow_self_signed_cert = False
-#requeue_on_error = False
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
 
 #
 # Local variables:
 # tab-width: 4
 # c-basic-offset: 4
 # End:
-# vim600: noexpandtab sw=4 ts=4 fdm=marker
-# vim<600: noexpandtab sw=4 ts=4
-#
+# vim600: expandtab sw=4 ts=4 fdm=marker
+# vim<600: expandtab 
