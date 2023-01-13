@@ -2,10 +2,15 @@
 History
 =======
 
+1.0.2 (2023-01-13)
+-------------------
+
+* Fixes the environment settings
+
 1.0.1 (2023-01-13)
 -------------------
 
-* Adds Docker image
+* adds Docker image
 
 1.0.0 (2021-03-26)
 -------------------
