@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 #
 # K2HR3 OpenStack Notification Listener
 #
@@ -17,28 +18,18 @@
 # REVISION:
 #
 
-[DEFAULT]
-#log_file = sys.stderr
-debug_level = error
-#libs_debug_level = warning
+# See:
+# https://docs.docker.com/language/python/build-images/
+FROM %%DOCKER_IMAGE_BASE%%
 
-[oslo_messaging_notifications]
-event_type = ^port\.delete\.end$
-publisher_id = ^network.*$
-transport_url = rabbit://guest:guest@127.0.0.1:5672/
-topic = notifications
-exchange = neutron
-#executor = threading
-#pool = k2hr3_osnl
-#allow_requeue = True
+WORKDIR /app
 
-[k2hr3]
-api_url = https://localhost/v1/role
-#timeout_seconds = 30
-#retries = 3
-#retry_interval_seconds = 60
-#allow_self_signed_cert = False
-#requeue_on_error = False
+COPY Pipfile /app/Pipfile
+RUN %%DOCKERFILE_RUN_COMMAND%%
+
+COPY . .
+
+CMD ["/bin/sh"]
 
 #
 # Local variables:
