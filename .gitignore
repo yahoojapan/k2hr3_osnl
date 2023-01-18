@@ -120,6 +120,9 @@ ENV/
 # mypy
 .mypy_cache/
 
+# emacs backup files
+*~
+
 #
 # VIM modelines
 #

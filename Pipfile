@@ -44,6 +44,8 @@ watchdog = "*"
 [packages]
 "oslo-config" = "*"
 "oslo.messaging" = "*"
+build = "*"
+
 #
 # Local variables:
 # tab-width: 4
@@ -52,4 +54,3 @@ watchdog = "*"
 # vim600: noexpandtab sw=4 ts=4 fdm=marker
 # vim<600: noexpandtab sw=4 ts=4
 #
-build = "*"
