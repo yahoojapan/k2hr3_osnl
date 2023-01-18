@@ -553,7 +553,7 @@ if [ -n "${OPT_FORCE_PUBLISHER}" ]; then
 	CI_FORCE_PUBLISHER="${OPT_FORCE_PUBLISHER}"
 elif [ -n "${ENV_FORCE_PUBLISHER}" ]; then
 	if echo "${ENV_FORCE_PUBLISHER}" | grep -q '[^0-9]'; then
-		PRNERR "\"ENV_FORCE_PUBLISHER\" environment value must be Python version(ex, 3.6/3.8/3.10...)."
+		PRNERR "\"ENV_FORCE_PUBLISHER\" environment:${ENV_FORCE_PUBLISHER} value must be Python version(ex, 3.6/3.8/3.10...)."
 		exit 1
 	fi
 	CI_FORCE_PUBLISHER="${ENV_FORCE_PUBLISHER}"
