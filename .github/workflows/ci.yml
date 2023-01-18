@@ -43,14 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.9', '3.10', '3.11']
-    env:
-      TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-      TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-      ENV_FORCE_PUBLISHER: ${{ secrets.FORCE_PUBLISHER }}
-      ENV_USE_PACKAGECLOUD_REPO: ${{ secrets.USE_PACKAGECLOUD_REPO }}
-      ENV_PACKAGECLOUD_OWNER: ${{ secrets.PACKAGECLOUD_OWNER }}
-      ENV_PACKAGECLOUD_DOWNLOAD_REPO: ${{ secrets.PACKAGECLOUD_DOWNLOAD_REPO }}
+        python-version: [3.9, 3.10, 3.11]
     steps:
     - name: Set environments from secrets
       run: |
