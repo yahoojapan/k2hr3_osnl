@@ -69,7 +69,7 @@ CI_PACKAGECLOUD_OWNER="antpickax"
 CI_PACKAGECLOUD_DOWNLOAD_REPO="stable"
 CI_TWINE_USERNAME=""
 CI_TWINE_PASSWORD=""
-CI_FORCE_PUBLISHER=""
+CI_FORCE_PUBLISHER="3.9"
 
 CI_IN_SCHEDULE_PROCESS=0
 CI_PUBLISH_TAG_NAME=""
@@ -188,7 +188,7 @@ func_usage()
 	echo "  Note:"
 	echo "    Environment variables and options have the same parameter items."
 	echo "    If both are specified, the option takes precedence."
-hg	echo "    Environment variables are set from Github Actions Secrets, etc."
+	echo "    Environment variables are set from Github Actions Secrets, etc."
 	echo "    GITHUB_REF and GITHUB_EVENT_NAME environments are used internally."
 	echo ""
 }
