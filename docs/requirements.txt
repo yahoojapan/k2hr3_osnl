@@ -55,7 +55,7 @@ oslo.serialization==5.0.0
 oslo.service==3.0.0
 oslo.utils==6.1.0
 packaging==23.0
-Paste==3.5.2
+Paste==3.5.3
 PasteDeploy==3.0.1
 pbr==5.11.1
 pep8-naming==0.13.3
