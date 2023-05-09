@@ -2,6 +2,12 @@
 History
 =======
 
+1.0.3 (2023-05-08)
+-------------------
+
+* Fixes the build errors
+* Sets the default python verison 3.9 in GitHubActions
+
 1.0.2 (2023-01-13)
 -------------------
 
