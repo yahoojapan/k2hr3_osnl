@@ -67,7 +67,7 @@ pycparser==2.21
 pydocstyle==6.2.3
 pyflakes==3.0.1
 Pygments==2.14.0
-pylint==2.15.10
+pylint==2.17.4
 pyparsing==3.0.9
 pyproject_hooks==1.0.0
 python-dateutil==2.8.2
