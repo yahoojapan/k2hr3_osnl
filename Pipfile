@@ -23,28 +23,24 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-coverage = "*"
-xmlrunner = "*"
-flake8 = "*"
-flake8-docstrings = "*"
-pep8-naming = "*"
-pycodestyle = "*"
-mccabe = "*"
-sphinx = "*"
-twine = "*"
-pylint = "*"
-astroid = "*"
-typed-ast = "*"
-mypy = "*"
-importlib-metadata = {version = ">=3.6"}
-"collective.checkdocs" = "*"
-argh = "*"
-watchdog = "*"
+build = ">=0.10.0"
+"collective.checkdocs" = ">=0.2"
+coverage = ">=7.2.5"
+flake8-docstrings = ">=1.7.0"
+mypy = ">=1.2.0"
+"oslo.messaging" = ">=14.2.0"
+pep8-naming = ">=0.13.3"
+pylint = ">=2.17.4"
+sphinx = ">=7.0.0"
+twine = ">=4.0.2"
+typed-ast = ">=1.5.4"
+watchdog = ">=3.0.0"
+xmlrunner = ">=1.7.7"
 
 [packages]
-"oslo-config" = "*"
-"oslo.messaging" = "*"
-build = "*"
+build = ">=0.10.0"
+"oslo.config" = ">=9.1.1"
+"oslo.messaging" = ">=14.2.0"
 
 #
 # Local variables:

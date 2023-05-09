@@ -2,6 +2,12 @@
 History
 =======
 
+1.0.5 (2023-05-09)
+-------------------
+
+* Fixes the inconsistency of the default python version
+* Updates the versions of dependent packages
+
 1.0.4 (2023-05-09)
 -------------------
 

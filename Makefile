@@ -58,7 +58,7 @@ init:
 	python3 -m pip install --upgrade pipenv
 	pipenv install --dev --skip-lock
 	pipenv graph
-	pipenv check
+	pipenv check --use-installed
 
 # Lint code and docs
 # lint fails if there are syntax errors or undefined names.
