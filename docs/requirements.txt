@@ -64,7 +64,7 @@ platformdirs==2.6.2
 prometheus-client==0.15.0
 pycodestyle==2.10.0
 pycparser==2.21
-pydocstyle==6.2.3
+pydocstyle==6.3.0
 pyflakes==3.0.1
 Pygments==2.14.0
 pylint==2.15.10
