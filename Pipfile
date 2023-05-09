@@ -38,9 +38,9 @@ watchdog = ">=3.0.0"
 xmlrunner = ">=1.7.7"
 
 [packages]
-"oslo-config" = "*"
-"oslo.messaging" = "*"
-build = "*"
+build = ">=0.10.0"
+"oslo.config" = ">=9.1.1"
+"oslo.messaging" = ">=14.2.0"
 
 #
 # Local variables:
