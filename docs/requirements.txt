@@ -16,7 +16,7 @@ coverage==7.0.5
 cryptography==39.0.1
 debtcollector==2.5.0
 dill==0.3.6
-dnspython==2.2.1
+dnspython==2.3.0
 docutils==0.19
 eventlet==0.33.2
 fasteners==0.18
