@@ -60,7 +60,7 @@ PasteDeploy==3.0.1
 pbr==5.11.1
 pep8-naming==0.13.3
 pkginfo==1.9.6
-platformdirs==2.6.2
+platformdirs==3.5.0
 prometheus-client==0.15.0
 pycodestyle==2.10.0
 pycparser==2.21
