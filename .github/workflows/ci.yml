@@ -61,10 +61,6 @@ jobs:
     - name: Run building and packaging
       run: |
         /bin/sh -c "$GITHUB_WORKSPACE/.github/workflows/python_helper.sh --pythontype ${{ matrix.python-version }}"
-    - name: Build and publish
-      if: github.event_name == 'release'
-      run: |
-        make release
   dockerimage:
     runs-on: ubuntu-latest
 
