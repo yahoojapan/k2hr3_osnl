@@ -22,7 +22,7 @@ eventlet==0.33.2
 fasteners==0.18
 fixtures==4.0.1
 flake8==6.0.0
-flake8-docstrings==1.6.0
+flake8-docstrings==1.7.0
 futurist==2.4.1
 greenlet==2.0.1
 idna==3.4
