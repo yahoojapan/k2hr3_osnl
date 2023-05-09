@@ -45,7 +45,7 @@ netaddr==0.8.0
 netifaces==0.11.0
 oslo.concurrency==5.0.1
 oslo.config==9.1.0
-oslo.context==5.0.0
+oslo.context==5.1.1
 oslo.i18n==5.1.0
 oslo.log==5.0.2
 oslo.messaging==14.1.0
