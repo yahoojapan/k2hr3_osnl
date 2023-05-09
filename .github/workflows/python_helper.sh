@@ -722,7 +722,7 @@ echo "  IS_PUBLISHER                  = ${IS_PUBLISHER}"
 echo ""
 
 PRNSUCCESS "Show execution environment variables"
-exit 0
+
 #==============================================================
 # Install all packages
 #==============================================================
