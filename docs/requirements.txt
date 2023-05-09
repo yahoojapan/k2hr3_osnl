@@ -27,7 +27,7 @@ futurist==2.4.1
 greenlet==2.0.1
 idna==3.4
 imagesize==1.4.1
-importlib-metadata==6.0.0
+importlib-metadata==6.6.0
 iso8601==1.1.0
 isort==5.11.4
 jaraco.classes==3.2.3
