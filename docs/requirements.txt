@@ -9,7 +9,7 @@ build==0.10.0
 cachetools==5.2.1
 certifi==2022.12.7
 cffi==1.15.1
-charset-normalizer==3.0.1
+charset-normalizer==3.1.0
 collective.checkdocs==0.2
 commonmark==0.9.1
 coverage==7.0.5
