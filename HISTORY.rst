@@ -2,6 +2,12 @@
 History
 =======
 
+1.0.4 (2023-05-09)
+-------------------
+
+* Fixes the release build error
+* Updates the packaging macros
+
 1.0.3 (2023-05-08)
 -------------------
 

@@ -1,8 +1,8 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	1.0.3
-Release:	1%{?dist}
+Version:	1.0.4
+Release:	%autorelease
 Summary:	An OpenStack notification listener for K2HR3
 
 License:	MIT
@@ -83,43 +83,4 @@ rm -rf %{buildroot}/usr/etc/k2hr3/k2hr3-osnl.conf
 %{_mandir}/man1/k2hr3-osnl.1*
 
 %changelog
-* Mon May 08 2023 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.3-1
-- Update for Release Version 1.0.3
-
-* Fri Jan 13 2023 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.2-1
-- Update for Release Version 1.0.2
-
-* Fri Jan 13 2023 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.1-1
-- Update for Release Version 1.0.1
-
-* Fri Mar 03 2021 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 1.0.0-1
-- Update for Release Version 1.0.0
-
-* Tue Dec 02 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.6-1
-- Update for Release Version 0.9.6
-
-* Tue Dec 01 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.5-1
-- Update for Release Version 0.9.5
-
-* Tue Dec 01 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.4-1
-- Update for Release Version 0.9.4
-
-* Mon Nov 30 2020 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.3-1
-- Update for Release Version 0.9.3
-
-* Tue Mar 26 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.2-1
-- Update for Release Version 0.9.2
-
-* Wed Mar 20 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-2
-- Removed redundant lines
-
-* Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.1-1
-- Fixed systemd unitfile
-
-* Tue Mar 19 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.0-2
-- Used the config(noreplace) to preserve the previous config file
-- Tested on fc29 and updated oslo library versions
-
-* Wed Mar 6 2019 Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp> 0.9.0-1
-- Initial Version
-
+%autochangelog
