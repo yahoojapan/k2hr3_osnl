@@ -215,7 +215,7 @@ RUN_PRE_TEST=0
 RUN_TEST=1
 RUN_POST_TEST=0
 RUN_PRE_PUBLISH=0
-RUN_PUBLISH=0
+RUN_PUBLISH=1
 RUN_POST_PUBLISH=0
 
 #
@@ -722,7 +722,7 @@ echo "  IS_PUBLISHER                  = ${IS_PUBLISHER}"
 echo ""
 
 PRNSUCCESS "Show execution environment variables"
-
+exit 0
 #==============================================================
 # Install all packages
 #==============================================================
