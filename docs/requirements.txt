@@ -101,7 +101,7 @@ vine==5.0.0
 watchdog==2.2.1
 webencodings==0.5.1
 WebOb==1.8.7
-wrapt==1.14.1
+wrapt==1.15.0
 xmlrunner==1.7.7
 yappi==1.4.0
 zipp==3.11.0
