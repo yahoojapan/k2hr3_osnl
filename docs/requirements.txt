@@ -13,7 +13,7 @@ charset-normalizer==3.0.1
 collective.checkdocs==0.2
 commonmark==0.9.1
 coverage==7.0.5
-cryptography==39.0.1
+cryptography==40.0.2
 debtcollector==2.5.0
 dill==0.3.6
 dnspython==2.2.1
