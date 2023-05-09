@@ -65,7 +65,7 @@ elif [ "${CI_PYTHON_VERSION}" = "3.9" ]; then
 	INSTALL_PKG_LIST="git"
 	INSTALLER_BIN="apt-get"
 	INSTALL_QUIET_ARG="-qq"
-	IS_PUBLISHER=0
+	IS_PUBLISHER=1
 
 elif [ "${CI_PYTHON_VERSION}" = "3.10" ]; then
 	INSTALL_PKG_LIST="git"
@@ -77,7 +77,7 @@ elif [ "${CI_PYTHON_VERSION}" = "3.11" ]; then
 	INSTALL_PKG_LIST="git"
 	INSTALLER_BIN="apt-get"
 	INSTALL_QUIET_ARG="-qq"
-	IS_PUBLISHER=1
+	IS_PUBLISHER=0
 fi
 
 #---------------------------------------------------------------
