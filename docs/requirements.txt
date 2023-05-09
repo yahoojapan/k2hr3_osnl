@@ -18,7 +18,7 @@ debtcollector==2.5.0
 dill==0.3.6
 dnspython==2.2.1
 docutils==0.19
-eventlet==0.33.2
+eventlet==0.33.3
 fasteners==0.18
 fixtures==4.0.1
 flake8==6.0.0
