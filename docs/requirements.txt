@@ -48,7 +48,7 @@ oslo.config==9.1.0
 oslo.context==5.0.0
 oslo.i18n==5.1.0
 oslo.log==5.0.2
-oslo.messaging==14.1.0
+oslo.messaging==14.3.0
 oslo.metrics==0.5.0
 oslo.middleware==5.0.0
 oslo.serialization==5.0.0
