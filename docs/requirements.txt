@@ -17,7 +17,7 @@ cryptography==39.0.1
 debtcollector==2.5.0
 dill==0.3.6
 dnspython==2.2.1
-docutils==0.19
+docutils==0.20.1
 eventlet==0.33.2
 fasteners==0.18
 fixtures==4.0.1
