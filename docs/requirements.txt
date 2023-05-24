@@ -12,7 +12,7 @@ cffi==1.15.1
 charset-normalizer==3.0.1
 collective.checkdocs==0.2
 commonmark==0.9.1
-coverage==7.0.5
+coverage==7.2.6
 cryptography==39.0.1
 debtcollector==2.5.0
 dill==0.3.6
