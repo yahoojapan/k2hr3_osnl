@@ -34,7 +34,7 @@ from k2hr3_osnl.endpoint import K2hr3NotificationEndpoint
 from k2hr3_osnl.exceptions import K2hr3Error
 
 here = path.abspath(path.dirname(__file__))
-conf_file_path = Path(sep.join([here, '..', 'etc',
+conf_file_path = Path(sep.join([here,
                                 'k2hr3-osnl.conf'])).resolve()
 
 OLD_ARGV = sys.argv.copy()

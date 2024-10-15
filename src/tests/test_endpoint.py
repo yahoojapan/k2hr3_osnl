@@ -46,6 +46,8 @@ SOFTWARE.
 
 import json
 import logging
+from pathlib import Path
+from os import path, sep
 import os
 import unittest
 from unittest.mock import MagicMock, patch
@@ -55,8 +57,15 @@ from k2hr3_osnl.endpoint import K2hr3NotificationEndpoint
 from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError, _K2hr3UserAgentError
 from k2hr3_osnl.useragent import _K2hr3UserAgent
 
-test_path = os.path.abspath(os.path.dirname(__file__))
-src_dir = os.path.join(test_path, '../..')
+here = path.abspath(path.dirname(__file__))
+conf_file_path = Path(sep.join([here,
+                                'k2hr3-osnl.conf'])).resolve()
+broken_conf_file_path = Path(
+    sep.join([here, 'k2hr3-osnl.conf_broken'])).resolve()
+notification_conf_file_path = Path(
+    sep.join([here, '../../',
+    '/tools/data/notifications_neutron.json'])).resolve()
+
 LOG = logging.getLogger(__name__)
 HANDLED = 'handled'
 REQUEUE = 'requeue'
@@ -77,7 +86,7 @@ class TestNotificationEndpoint(unittest.TestCase):
 
     def test_notification_endpoint_construct(self):
         """Creates a NotificationEndpoint instance."""
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         self.assertIsInstance(endpoint, K2hr3NotificationEndpoint)
 
@@ -93,7 +102,7 @@ class TestNotificationEndpoint(unittest.TestCase):
 
     def test_notification_endpoint_conf(self):
         """Checks if conf is readable."""
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         self.assertIsInstance(endpoint, K2hr3NotificationEndpoint)
         self.assertEqual(endpoint.conf, conf)
@@ -101,9 +110,9 @@ class TestNotificationEndpoint(unittest.TestCase):
     def test_notification_endpoint_readonly(self):
         """Checks if conf is readonly."""
         with self.assertRaises(AttributeError) as cm:
-            conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+            conf = K2hr3Conf(conf_file_path)
             endpoint = K2hr3NotificationEndpoint(conf)
-            new_conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+            new_conf = K2hr3Conf(conf_file_path)
             endpoint.conf = new_conf
         the_exception = cm.exception
         self.assertEqual("can't set attribute", '{}'.format(the_exception))
@@ -130,7 +139,7 @@ class TestNotificationEndpoint(unittest.TestCase):
             'cuk': '12345678-1234-5678-1234-567812345678',
             'ips': ['127.0.0.1', '127.0.0.2']
         }
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         result = endpoint.info(
             context={},
@@ -157,7 +166,7 @@ class TestNotificationEndpoint(unittest.TestCase):
         }
         # output --- params
         expect_params = {'cuk': '12345678-1234-5678-1234-567812345678'}
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         result = endpoint.info(
             context={},
@@ -181,7 +190,7 @@ class TestNotificationEndpoint(unittest.TestCase):
         }
         # output --- params
         expect_params = {'cuk': '12345678-1234-5678-1234-567812345678'}
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         result = endpoint.info(
             context={},
@@ -204,7 +213,7 @@ class TestNotificationEndpoint(unittest.TestCase):
             "invalid_named": "12345678-1234-5678-1234-567812345678",
         }
         # __call_r3api is mocked! no http request will send.
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         result = endpoint.info(
             context={},
@@ -227,12 +236,12 @@ class TestNotificationEndpoint(unittest.TestCase):
         """
         # Expected return_value is REQUEUE in this case.
         self.mock_method.return_value = REQUEUE
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         conf.k2hr3.requeue_on_error = True
         _K2hr3UserAgent.send = MagicMock(
             side_effect=_K2hr3UserAgentError('error'))
         endpoint = K2hr3NotificationEndpoint(conf)
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -251,10 +260,10 @@ class TestNotificationEndpoint(unittest.TestCase):
         K2hr3NotificationEndpoint::info() method will catch all exceptions
         then it returns HANDLED to the dispatcher.
         """
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         _K2hr3UserAgent.send = MagicMock(side_effect=Exception('error'))
         endpoint = K2hr3NotificationEndpoint(conf)
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -268,10 +277,10 @@ class TestNotificationEndpoint(unittest.TestCase):
         __call_r3api internally callses _K2hr3UserAgent::send() to call the R3 API.
         We mock the method to return True without having access to the API.
         """
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         _K2hr3UserAgent.send = MagicMock(return_value=True)
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -285,10 +294,10 @@ class TestNotificationEndpoint(unittest.TestCase):
         __call_r3api internally callses _K2hr3UserAgent::send() to call the R3 API.
         We mock the method to return False without having access to the API.
         """
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         _K2hr3UserAgent.send = MagicMock(return_value=False)
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -304,12 +313,12 @@ class TestNotificationEndpoint(unittest.TestCase):
         """
         # Expected return_value is REQUEUE in this case.
         self.mock_method.return_value = REQUEUE
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         conf.k2hr3.requeue_on_error = True
         endpoint = K2hr3NotificationEndpoint(conf)
         _K2hr3UserAgent.send = MagicMock(return_value=False)
 
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -325,11 +334,11 @@ class TestNotificationEndpoint(unittest.TestCase):
         __call_r3api internally callses _K2hr3UserAgent::send() to call the R3 API.
         We mock the method to return False without having access to the API.
         """
-        conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+        conf = K2hr3Conf(conf_file_path)
         endpoint = K2hr3NotificationEndpoint(conf)
         _K2hr3UserAgent.send = MagicMock(
             side_effect=_K2hr3UserAgentError('send error'))
-        with open(src_dir + '/tools/data/notifications_neutron.json') as fp:
+        with open(notification_conf_file_path) as fp:
             data = json.load(fp)
             result = endpoint.info(data['ctxt'], data['publisher_id'],
                                    data['event_type'], data['payload'],
@@ -350,7 +359,7 @@ class TestNotificationEndpoint(unittest.TestCase):
                 K2hr3NotificationEndpoint,
                 '_payload_to_params',
                 side_effect=Exception('_payload_to_params error')):
-            conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+            conf = K2hr3Conf(conf_file_path)
             endpoint = K2hr3NotificationEndpoint(conf)
             result = endpoint.info(
                 context={},
@@ -374,7 +383,7 @@ class TestNotificationEndpoint(unittest.TestCase):
                 K2hr3NotificationEndpoint,
                 '_K2hr3NotificationEndpoint__call_r3api',
                 side_effect=Exception('__call_r3api error')):
-            conf = K2hr3Conf(src_dir + '/etc/k2hr3_osnl.conf.sample')
+            conf = K2hr3Conf(conf_file_path)
             endpoint = K2hr3NotificationEndpoint(conf)
             result = endpoint.info(
                 context={},
