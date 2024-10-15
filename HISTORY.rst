@@ -2,6 +2,13 @@
 History
 =======
 
+1.0.7 (2024-10-15)
+-------------------
+
+* Update the supported interpreters.
+* Changes the CI settings for PyPI Trusted Publisher.
+* Fixe the docs.
+
 1.0.6 (2023-05-09)
 -------------------
 

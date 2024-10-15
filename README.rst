@@ -2,19 +2,22 @@
 K2HR3 OpenStack Notification Listener
 =====================================
 
-
-.. image:: https://img.shields.io/pypi/v/k2hr3_osnl.svg
-        :target: https://pypi.org/project/k2hr3-osnl
-
-.. image:: https://img.shields.io/travis/yahoojapan/k2hr3_osnl.svg
-        :target: https://travis-ci.org/yahoojapan/k2hr3_osnl
-
-.. image:: https://readthedocs.org/projects/k2hr3-osnl/badge/?version=latest
-        :target: https://k2hr3-osnl.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
         :target: https://github.com/yahoojapan/k2hr3_osnl/blob/master/LICENSE
+.. image:: https://img.shields.io/pypi/pyversions/k2hdkc.svg
+        :target: https://pypi.python.org/pypi/k2hr3-osnl
+.. image:: https://img.shields.io/github/forks/yahoojapan/k2hr3_osnl.svg
+        :target: https://github.com/yahoojapan/k2hr3_osnl/network
+.. image:: https://img.shields.io/github/stars/yahoojapan/k2hr3_osnl.svg
+        :target: https://github.com/yahoojapan/k2hr3_osnl/stargazers
+.. image:: https://img.shields.io/github/issues/yahoojapan/k2hr3_osnl.svg
+        :target: https://github.com/yahoojapan/k2hr3_osnl/issues
+.. image:: https://github.com/yahoojapan/k2hr3_osnl/workflows/Python%20package/badge.svg
+        :target: https://github.com/yahoojapan/k2hr3_osnl/actions
+.. image:: https://readthedocs.org/projects/k2hdkc-python/badge/?version=latest
+        :target: https://k2hr3-osnl.readthedocs.io/en/latest/?badge=latest
+.. image:: https://img.shields.io/pypi/v/k2hr3-osnl
+        :target: https://pypi.org/project/k2hr3-osnl/
 
 
 An OpenStack notification listener for the K2HR3 role-based ACL system developed in Yahoo Japan Corporation.
