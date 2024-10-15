@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # K2HR3 OpenStack Notification Listener
 #
@@ -17,13 +18,10 @@
 # REVISION:
 #
 
-# Minimal makefile for Sphinx documentation
-#
-
-# You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = pipenv run python3 -msphinx
-SPHINXPROJ    = k2hr3_osnl
+# You can set these variables from the command line, and also
+# from the environment for the first two.
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
 
