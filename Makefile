@@ -48,29 +48,11 @@ BROWSER := python3 -c "$$BROWSER_PYSCRIPT"
 help:
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-# Initialize development environment
-# Initialization fails if dependency problems happens or security vulnerabilities are detected.
-#
-# Note: 
-# Make sure python3-devel or python3-dev is installed. Because oslo-message(or dependent libs) requires Python.h
 init:
-	python3 -m pip install --upgrade pip
-	python3 -m pip install --upgrade pipenv
-	pipenv install --dev --skip-lock
+	python3 -m pip install pipenv
+	pipenv install --skip-lock
 	pipenv graph
-	pipenv check --use-installed
-
-# Lint code and docs
-# lint fails if there are syntax errors or undefined names.
-#
-# Note:
-# lint commands should be emit in virtualenv activated environment.
-lint:
-	pipenv run flake8 --version
-	pipenv run flake8 k2hr3_osnl tests
-	pipenv run mypy k2hr3_osnl tests
-	pipenv run pylint k2hr3_osnl tests -r n
-	pipenv run python3 setup.py checkdocs
+	pipenv install --dev
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
@@ -94,78 +76,78 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
-test-only: ## run tests quickly with the default Python
-	pipenv run python3 -m unittest
+lint: ## check style with flake8
+	flake8 --version
+	flake8 src/k2hr3_osnl
+	mypy src/k2hr3_osnl
+	pylint src/k2hr3_osnl
+	python3 setup.py checkdocs
 
-# Check version strings consistency
-# Make sure the following version strings are same. 
-# 1. HISTORY.rst
-# 2. python-k2hr3-osnl.spec
-# 3. __init__.py
+test: ## run tests quickly with the default Python
+	python3 -m unittest discover src
+
+build: ## run build
+	$ python3 -m pip install --upgrade build
+	$ python3 -m build
+
 version:
 	@rm -f VERSION RPMSPEC_VERSION
 	@perl -ne 'print if /^[0-9]+.[0-9]+.[0-9]+ \([0-9]{4}-[0-9]{2}-[0-9]{2}\)$$/' HISTORY.rst \
 		| head -n 1 | perl -lne 'print $$1 if /^([0-9]+.[0-9]+.[0-9]+) \(.*\)/' > VERSION
 	@perl -ne 'print $$2 if /^Version:(\s+)([0-9]+.[0-9]+.[0-9]+)$$/' python-k2hr3-osnl.spec > RPMSPEC_VERSION
 
-SOURCE_VERSION = $(shell pipenv run python3 -c 'import k2hr3_osnl; print(k2hr3_osnl.version())')
+SOURCE_VERSION = $(shell cd src; python3 -c 'import k2hr3_osnl; print(k2hr3_osnl.version())')
 HISTORY_VERSION = $(shell cat VERSION)
 RPMSPEC_VERSION = $(shell cat RPMSPEC_VERSION)
 
-# Check version strings consistency
-# Make sure the following version strings are same. 
-# 1. HISTORY.rst
-# 2. python-k2hr3-osnl.spec
-# 3. __init__.py
-test: version ## builds source and wheel package
+test-version: version ## builds source and wheel package
 	@echo 'source  ' ${SOURCE_VERSION}
 	@echo 'history ' ${HISTORY_VERSION}
 	@echo 'rpmspec ' ${RPMSPEC_VERSION}
 	@if test "${SOURCE_VERSION}" = "${HISTORY_VERSION}" -a "${HISTORY_VERSION}" = "${RPMSPEC_VERSION}" ; then \
-		pipenv run python3 -m unittest ; \
+		python3 -m unittest discover src; \
 	else \
 		exit 1; \
 	fi
 
-test-all: lint test
+test-all: lint test-version
 
 coverage: ## check code coverage quickly with the default Python
-	pipenv run coverage run --source k2hr3_osnl -m unittest
-	pipenv run coverage report -m
-	pipenv run coverage xml
-	pipenv run coverage html
+	coverage run --source src/k2hr3_osnl -m unittest
+	coverage report -m
+	coverage xml
+	coverage html
 #	$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/k2hr3_osnl.rst
 	rm -f docs/modules.rst
-	pipenv run sphinx-apidoc -o docs/ k2hr3_osnl
+	sphinx-apidoc -o docs/ src/k2hr3_osnl
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 #	$(BROWSER) docs/_build/html/index.html
 
 servedocs: docs ## compile the docs watching for changes
-	pipenv run watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: dist ## package and upload a release
-	pipenv run twine check dist/*
-	pipenv run twine upload dist/*
+	twine check dist/*
+	twine upload dist/*
 
 test-release:
-	pipenv run twine check dist/*
-	pipenv run twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+	twine check dist/*
+	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 dist: clean version ## builds source and wheel package
 	@echo 'source  ' ${SOURCE_VERSION}
 	@echo 'history ' ${HISTORY_VERSION}
 	@if test "${SOURCE_VERSION}" = "${HISTORY_VERSION}" -a "${HISTORY_VERSION}" = "${RPMSPEC_VERSION}" ; then \
-		pipenv run python3 setup.py sdist ; \
-		pipenv run python3 setup.py bdist_wheel ; \
+		python3 -m build ; \
 		ls -l dist ; \
 	fi
 
 install: clean ## install the package to the active Python's site-packages
-	pipenv run python3 setup.py install
+	python3 -m pip install .
 
 #
 # Local variables:
