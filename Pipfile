@@ -22,6 +22,9 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[requires]
+python_version = "3.9"
+
 [dev-packages]
 coverage = "*"
 flake8 = "*"
@@ -43,7 +46,6 @@ mypy = "*"
 "collective.checkdocs" = "*"
 tomli = "*"
 dill = "*"
-typing_extensions = "*"
 
 [packages]
 build = ">=0.10.0"
