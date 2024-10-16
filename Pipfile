@@ -43,7 +43,7 @@ mypy = "*"
 "collective.checkdocs" = "*"
 tomli = "*"
 dill = "*"
-typing-extensions = "*"
+typing_extensions = "*"
 
 [packages]
 build = ">=0.10.0"

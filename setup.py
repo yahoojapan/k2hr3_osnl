@@ -63,7 +63,7 @@ def get_version(pkg=PKG_NAME):
     import re
 
     here = path.abspath(path.dirname(__file__))
-    init_py = Path(sep.join([here, pkg, '__init__.py'])).resolve()
+    init_py = Path(sep.join([here, 'src', pkg, '__init__.py'])).resolve()
 
     with init_py.open() as fp:
         for line in fp:
