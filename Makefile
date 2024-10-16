@@ -50,9 +50,8 @@ help:
 
 init:
 	python3 -m pip install pipenv
-	pipenv install --skip-lock
-	pipenv graph
 	pipenv install --dev
+	pipenv graph
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
