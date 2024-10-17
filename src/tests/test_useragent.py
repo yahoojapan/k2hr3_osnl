@@ -96,6 +96,27 @@ class TestK2hr3UserAgent(unittest.TestCase):
             the_exception.msg, 'conf is a K2hr3Conf instance, not {}'.format(
                 type(conf)))
 
+    def test_k2hr3useragent_construct_conf_validation_error(self):
+        """Checks if the url in conf is invalid."""
+        self._conf.k2hr3.api_url = ''  # self.conf instantiates in every setUp.
+        with self.assertRaises(_K2hr3UserAgentError) as cm:
+            _K2hr3UserAgent(self._conf)
+        the_exception = cm.exception
+        self.assertEqual('a valid url is expected, not ',
+                         '{}'.format(the_exception))
+
+    def test_k2hr3useragent_repr(self):
+        """Represent a _K2hr3UserAgent instance."""
+        agent = _K2hr3UserAgent(self._conf)
+        # Note: The order of _error and _code is unknown!
+        self.assertRegex(repr(agent), '<_K2hr3UserAgent _.*')
+
+    def test_k2hr3httpresponse_str(self):
+        """Stringfy a _K2hr3UserAgent instance."""
+        agent = _K2hr3UserAgent(self._conf)
+        # Note: The order of _error and _code is unknown!
+        self.assertRegex(str(agent), '<_K2hr3UserAgent _.*')
+
     def test_k2hr3useragent_headers(self):
         """Checks if headers."""
         agent = _K2hr3UserAgent(self._conf)
