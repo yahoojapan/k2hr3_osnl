@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Yahoo Japan Corporation
+# This file is distributed under the same license as the k2hr3_osnl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: k2hr3_osnl \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-17 16:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../installation.rst:5
+msgid "Installation"
+msgstr ""
+
+#: ../../installation.rst:9
+msgid "Stable release"
+msgstr ""
+
+#: ../../installation.rst:11
+msgid ""
+"To install K2HR3 OpenStack Notification Listener, run this command in "
+"your terminal:"
+msgstr ""
+
+#: ../../installation.rst:17
+msgid ""
+"This is the preferred method to install K2HR3 OpenStack Notification "
+"Listener, as it will always install the most recent stable release."
+msgstr ""
+
+#: ../../installation.rst:19
+msgid ""
+"If you don't have `pip`_ installed, this `Python installation guide`_ can"
+" guide you through the process."
+msgstr ""
+
+#: ../../installation.rst:26
+msgid "Configuration"
+msgstr ""
+
+#: ../../installation.rst:28
+msgid "There are two primary configurations in ``k2hr3_onsl.conf``:"
+msgstr ""
+
+#: ../../installation.rst:30
+msgid "``transport_url``"
+msgstr ""
+
+#: ../../installation.rst:31
+msgid "The message queue server location with an username and a password."
+msgstr ""
+
+#: ../../installation.rst:32
+msgid "``api_url``"
+msgstr ""
+
+#: ../../installation.rst:33
+msgid "The k2hr3 WebApi server location."
+msgstr ""
+
+#: ../../installation.rst:35
+msgid ""
+"The following figure can help you to understand the transport_url and "
+"api_url:"
+msgstr ""
+
+#: ../../installation.rst:39
+msgid ""
+"The ``k2hr3_osnl.conf`` path depends on the pip_ command shipped in your "
+"OS. You can get the path by two commands."
+msgstr ""
+
+#: ../../installation.rst:64
+msgid ""
+"``/usr/local/etc/k2hr3/k2hr3_osnl.conf`` is it. You should change the "
+"``transport_url`` and the ``api_url`` setting for your environment."
+msgstr ""
+
+#: ../../installation.rst:83
+msgid "FYI: The `Usage` page describes every setting parameters."
+msgstr ""
+
+#: ../../installation.rst:86
+msgid "Start"
+msgstr ""
+
+#: ../../installation.rst:88
+msgid "This chapter instructs how to install the listener."
+msgstr ""
+
+#: ../../installation.rst:94
+msgid ""
+"No error means the listener successfully starts to listen to the next "
+"notification message."
+msgstr ""
+
+#: ../../installation.rst:97
+msgid "Service Management"
+msgstr ""
+
+#: ../../installation.rst:99
+msgid ""
+"While you have already successfully started the listener, you would like "
+"to prepare for following troubles."
+msgstr ""
+
+#: ../../installation.rst:101
+msgid "The listener process is dead after the OS rebooted."
+msgstr ""
+
+#: ../../installation.rst:102
+msgid ""
+"The listener is dead when  you have stopped the terminal which started "
+"the listener."
+msgstr ""
+
+#: ../../installation.rst:104
+msgid ""
+"Most of modern OSs provide the way to register a process as a service to "
+"the service management system which launches them at boot time and stops "
+"them at shutdown. systemd_ is one of such a service which is installed in"
+" Debian 9, Fedora 29, CentOS 7 and other recent Linux distributions."
+msgstr ""
+
+#: ../../installation.rst:109
+msgid "An example of what systemd_ config file might look like is:"
+msgstr ""
+
+#: ../../installation.rst:132
+msgid ""
+"FYI: systemd.unit_ and systemd.service_ page describe meaning of "
+"parameters."
+msgstr ""
+
+#: ../../installation.rst:137
+msgid ""
+"The syntax is the \".INI\" style. ``ExecStart`` specifies the absolute "
+"``k2hr3_osnl`` path. The path depends on your OS. I found it in "
+"``/usr/local/bin/k2hr3_osnl`` in my environment."
+msgstr ""
+
+#: ../../installation.rst:145
+msgid ""
+"After update the ``ExecStart``, save the configuration to the "
+"``/lib/systemd/system/k2hr3_osnl.service`` and register it to systemd_. "
+"Please note the systemd configuration path depends on you OS."
+msgstr ""
+
+#: ../../installation.rst:155
+msgid ""
+"After that, you tell systemd_ to look for your service at the first "
+"command and you tell systemd_ to enable it at the second command, so that"
+" it will start every time the system boots."
+msgstr ""
+
+#: ../../installation.rst:160
+msgid "Then, you start the k2hr3_osnl as a service."
+msgstr ""
+
+#: ../../installation.rst:166
+msgid "You can see the service status:"
+msgstr ""
+
+#: ../../installation.rst:172
+msgid ""
+"If you have got some errors, you should check logs put on stderr at "
+"first. Then please send a issue with it from issue_."
+msgstr ""
+

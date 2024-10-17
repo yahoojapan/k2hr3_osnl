@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Yahoo Japan Corporation
+# This file is distributed under the same license as the k2hr3_osnl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: k2hr3_osnl \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-17 16:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../../README.rst:3
+msgid "K2HR3 OpenStack Notification Listener"
+msgstr ""
+
+#: ../../../README.rst:23
+msgid ""
+"An OpenStack notification listener for the K2HR3 role-based ACL system "
+"developed in Yahoo Japan Corporation."
+msgstr ""
+
+#: ../../../README.rst:27
+msgid "Overview"
+msgstr ""
+
+#: ../../../README.rst:29
+msgid ""
+"**k2hr3_osnl** is **K2HR3** **O** pen **S** tack **N** otification **L** "
+"istener that is a part of the K2HR3_ system, which is a role-based ACL "
+"system developed in `Yahoo Japan Corporation`_."
+msgstr ""
+
+#: ../../../README.rst:35
+msgid ""
+"**k2hr3_osnl** is an OpenStack_ Notification Listener that listens to "
+"notifications from OpenStack_ services. OpenStack_ services emit "
+"notifications to the message bus, which is provided by oslo.messaging_. "
+"oslo.messaging_ transports notification messages to a message broker "
+"server. The default broker server is RabbitMQ_. When **k2hr3_osnl** "
+"catches a notification message from RabbitMQ_, it sends the payload to "
+"the K2HR3_ that is a role-based ACL system that provides access control "
+"for OpenStack virtual machine instances. Figure 1 shows the relationship "
+"between the components."
+msgstr ""
+
+#: ../../../README.rst:46
+msgid "Fig.1: overview"
+msgstr ""
+
+#: ../../../README.rst:52
+msgid "Documents"
+msgstr ""
+
+#: ../../../README.rst:54
+msgid "Here are documents including other components."
+msgstr ""
+
+#: ../../../README.rst:56
+msgid "`K2HR3 Document`_"
+msgstr ""
+
+#: ../../../README.rst:58
+msgid "`K2HR3 Web Application Usage`_"
+msgstr ""
+
+#: ../../../README.rst:60
+msgid "`K2HR3 REST API Usage`_"
+msgstr ""
+
+#: ../../../README.rst:62
+msgid "`K2HR3 OpenStack Notification Listener Usage`_"
+msgstr ""
+
+#: ../../../README.rst:64
+msgid "`K2HR3 Watcher Usage`_"
+msgstr ""
+
+#: ../../../README.rst:66
+msgid "`K2HR3 Get Resource Usage`_"
+msgstr ""
+
+#: ../../../README.rst:68
+msgid "`K2HR3 Utilities for Setup`_"
+msgstr ""
+
+#: ../../../README.rst:70
+msgid "`K2HR3 Demonstration`_"
+msgstr ""
+
+#: ../../../README.rst:72
+msgid "`K2HR3 Command Line Interface Usage`_"
+msgstr ""
+
+#: ../../../README.rst:74
+msgid "`About k2hdkc`_"
+msgstr ""
+
+#: ../../../README.rst:76
+msgid "`About k2hash`_"
+msgstr ""
+
+#: ../../../README.rst:78
+msgid "`About chmpx`_"
+msgstr ""
+
+#: ../../../README.rst:80
+msgid "`About k2hash transaction plugin`_"
+msgstr ""
+
+#: ../../../README.rst:82
+msgid "`About AntPickax`_"
+msgstr ""
+
+#: ../../../README.rst:101
+msgid "Repositories"
+msgstr ""
+
+#: ../../../README.rst:103
+msgid "Here are repositories including other components."
+msgstr ""
+
+#: ../../../README.rst:105
+msgid "`K2HR3 main repository`_"
+msgstr ""
+
+#: ../../../README.rst:107
+msgid "`K2HR3 Web Application repository`_"
+msgstr ""
+
+#: ../../../README.rst:109
+msgid "`K2HR3 REST API repository`_"
+msgstr ""
+
+#: ../../../README.rst:111
+msgid "`K2HR3 OpenStack Notification Listener`_"
+msgstr ""
+
+#: ../../../README.rst:113
+msgid "`K2HR3 Container Registration Sidecar`_"
+msgstr ""
+
+#: ../../../README.rst:115
+msgid "`K2HR3 Get Resource`_"
+msgstr ""
+
+#: ../../../README.rst:117
+msgid "`K2HR3 Command Line Interface`_"
+msgstr ""
+
+#: ../../../README.rst:119
+msgid "`k2hdkc`_"
+msgstr ""
+
+#: ../../../README.rst:121
+msgid "`k2hash`_"
+msgstr ""
+
+#: ../../../README.rst:123
+msgid "`chmpx`_"
+msgstr ""
+
+#: ../../../README.rst:125
+msgid "`k2hash transaction plugin`_"
+msgstr ""
+
+#: ../../../README.rst:142
+msgid "Packages"
+msgstr ""
+
+#: ../../../README.rst:144
+msgid "Here are packages including other components."
+msgstr ""
+
+#: ../../../README.rst:146
+msgid "`k2hr3-app(npm packages)`_"
+msgstr ""
+
+#: ../../../README.rst:148
+msgid "`k2hr3-api(npm packages)`_"
+msgstr ""
+
+#: ../../../README.rst:150
+msgid "`k2hr3-osnl(python packages)`_"
+msgstr ""
+
+#: ../../../README.rst:152
+msgid "`k2hr3.sidecar(dockerhub)`_"
+msgstr ""
+
+#: ../../../README.rst:154
+msgid "`k2hr3-get-resource(packages)`_"
+msgstr ""
+
+#: ../../../README.rst:166
+msgid "License"
+msgstr ""
+
+#: ../../../README.rst:168
+msgid "MIT License"
+msgstr ""
+
+#: ../../../README.rst:172
+msgid "AntPickax"
+msgstr ""
+
+#: ../../../README.rst:174
+msgid ""
+"**k2hr3_osnl** is a project by AntPickax_, which is an open source team "
+"in `Yahoo Japan Corporation`_."
+msgstr ""
+
+#: ../../../README.rst:180
+msgid "Credits"
+msgstr ""
+
+#: ../../../README.rst:182
+msgid ""
+"This package was created with Cookiecutter_ and the `audreyr"
+"/cookiecutter-pypackage`_ project template."
+msgstr ""
+

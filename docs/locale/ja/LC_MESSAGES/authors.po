@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Yahoo Japan Corporation
+# This file is distributed under the same license as the k2hr3_osnl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: k2hr3_osnl \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-17 16:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../../AUTHORS.rst:3
+msgid "Credits"
+msgstr "功績"
+
+#: ../../../AUTHORS.rst:6
+msgid "Development Lead"
+msgstr "開発者"
+
+#: ../../../AUTHORS.rst:8
+msgid "Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>"
+msgstr ""
+
+#: ../../../AUTHORS.rst:11
+msgid "Contributors"
+msgstr "貢献者"
+
+#: ../../../AUTHORS.rst:13
+msgid "Takeshi Nakatani <ggtakec@gmail.com>"
+msgstr ""
+

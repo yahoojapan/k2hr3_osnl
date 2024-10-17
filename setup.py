@@ -48,22 +48,15 @@ SOFTWARE.
 from setuptools import setup, find_packages
 import sys
 
-PKG_NAME = 'k2hr3_osnl'
 
-with open('README.rst') as readme_file:
-    readme = readme_file.read()
-
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
-
-def get_version(pkg=PKG_NAME):
+def get_version():
     """Returns the package version from __ini__.py."""
     from pathlib import Path
     from os import path, sep
     import re
 
     here = path.abspath(path.dirname(__file__))
-    init_py = Path(sep.join([here, 'src', pkg, '__init__.py'])).resolve()
+    init_py = Path(sep.join([here, 'src', 'k2hr3_osnl', '__init__.py'])).resolve()
 
     with init_py.open() as fp:
         for line in fp:
@@ -74,45 +67,7 @@ def get_version(pkg=PKG_NAME):
     raise RuntimeError('version expected, but no version found.')
 
 setup(
-    author="Hirotaka Wakabayashi",
-    author_email='hiwakaba@yahoo-corp.jp',
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'Environment :: Console',
-        'Environment :: OpenStack',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Information Technology',
-        'License :: OSI Approved :: MIT License',
-        "Operating System :: POSIX :: Linux",
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-    ],
-    data_files=[('etc/k2hr3',['etc/k2hr3-osnl.conf'])],
-    description="An OpenStack notification listener for the K2HR3 role-based ACL system",
-    entry_points={
-        'console_scripts': [
-            'k2hr3-osnl=k2hr3_osnl:main',
-        ],
-    },
-    install_requires=[
-        'oslo.config>=5.2.0',
-        'oslo.messaging>=5.17.1',
-    ],
-    include_package_data=True,
-    keywords='AntPickax IAM OpenStack',
-    license="MIT license",
-    long_description=readme + '\n\n' + history,
-    name=PKG_NAME,
-    packages=find_packages(include=['k2hr3_osnl']),
-    project_urls={
-        'Bugs': 'https://github.com/yahoojapan/k2hr3_osnl/issues',
-        'Docs': 'https://k2hr3-osnl.readthedocs.io/en/latest/',
-        'Source': 'https://github.com/yahoojapan/k2hr3_osnl',
-    },
-    python_requires='>=3.5',
-    url='https://github.com/yahoojapan/k2hr3_osnl',
     version=get_version(),
-    zip_safe=False,
 )
 
 #
