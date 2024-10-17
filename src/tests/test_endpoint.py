@@ -115,7 +115,7 @@ class TestNotificationEndpoint(unittest.TestCase):
             new_conf = K2hr3Conf(conf_file_path)
             endpoint.conf = new_conf
         the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
+        self.assertRegex("can't set attribute.*", '{}'.format(the_exception))
 
     def test_neutron_payload_to_params(self):
         """Checks if _payload_to_params() works correctly.

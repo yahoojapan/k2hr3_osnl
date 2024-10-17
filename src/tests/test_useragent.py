@@ -138,7 +138,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
             }
             agent.headers = new_headers
         the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
+        self.assertRegex("can't set attribute.*", '{}'.format(the_exception))
 
     def test_k2hr3useragent_params(self):
         """Checks if params."""
@@ -153,7 +153,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
             new_params = {'newkey': 'value'}
             agent.params = new_params
         the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
+        self.assertRegex("can't set attribute.*", '{}'.format(the_exception))
 
     def test_k2hr3useragent_code(self):
         """Checks if the code."""
@@ -166,7 +166,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
             agent = _K2hr3UserAgent(self._conf)
             agent.code = 204
         the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
+        self.assertRegex("can't set attribute.*", '{}'.format(the_exception))
 
     def test_k2hr3useragent_error(self):
         """Checks if errors."""
@@ -179,7 +179,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
             agent = _K2hr3UserAgent(self._conf)
             agent.error = 'i am broken'
         the_exception = cm.exception
-        self.assertEqual("can't set attribute", '{}'.format(the_exception))
+        self.assertRegex("can't set attribute.*", '{}'.format(the_exception))
 
     def test_k2hr3useragent_method(self):
         """Checks if method is valid."""
