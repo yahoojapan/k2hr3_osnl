@@ -129,7 +129,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_headers_readonly(self):
         """Checks if headers is readonly."""
-		with self.assertRaises(AttributeError):
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             new_headers = {
                 'User-Agent':
@@ -146,7 +146,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_params_readonly(self):
         """Checks if params is readonly."""
-		with self.assertRaises(AttributeError):
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             new_params = {'newkey': 'value'}
             agent.params = new_params
@@ -158,7 +158,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_code_readonly(self):
         """Checks if code is readonly."""
-		with self.assertRaises(AttributeError):
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             agent.code = 204
 
@@ -169,7 +169,7 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
     def test_k2hr3useragent_error_readonly(self):
         """Checks if error is readonly."""
-		with self.assertRaises(AttributeError):
+        with self.assertRaises(AttributeError):
             agent = _K2hr3UserAgent(self._conf)
             agent.error = 'i am broken'
 

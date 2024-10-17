@@ -109,7 +109,7 @@ class TestNotificationEndpoint(unittest.TestCase):
 
     def test_notification_endpoint_readonly(self):
         """Checks if conf is readonly."""
-		with self.assertRaises(AttributeError):
+        with self.assertRaises(AttributeError):
             conf = K2hr3Conf(conf_file_path)
             endpoint = K2hr3NotificationEndpoint(conf)
             new_conf = K2hr3Conf(conf_file_path)
