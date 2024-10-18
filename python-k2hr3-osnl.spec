@@ -1,7 +1,7 @@
 %global srcname k2hr3_osnl
 %global pypi_name k2hr3-osnl
 Name:		python-k2hr3-osnl
-Version:	1.0.6
+Version:	1.0.7
 Release:	%autorelease
 Summary:	An OpenStack notification listener for K2HR3
 
