@@ -61,7 +61,7 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
         if isinstance(path, Path) is False:
             raise K2hr3ConfError(f'Path expected, not {type(path).__name__}')
         if path.exists() is False:
-            raise K2hr3ConfError('path must exist, not {}'.format(path))
+            raise K2hr3ConfError(f'path must exist, not {path}')
         if path.is_file() is False:
             raise K2hr3ConfError(f'path must be a regular file, not {path}')
         try:

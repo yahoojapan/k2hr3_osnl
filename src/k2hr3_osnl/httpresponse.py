@@ -56,8 +56,8 @@ class _K2hr3HttpResponse:
         if isinstance(value, int) is True:
             self._code = value
         else:
-            raise _K2hr3UserAgentError('code should be int, not {}'.format(
-                type(value)))
+            raise _K2hr3UserAgentError(
+                f'code should be int, not {type(value)}')
 
     @property
     def error(self) -> str:  # public.
@@ -79,23 +79,22 @@ class _K2hr3HttpResponse:
         if isinstance(value, str) is True:
             self._error = value
         else:
-            raise _K2hr3UserAgentError(
-                'error should be str, not {}'.format(value))
+            raise _K2hr3UserAgentError(f'error should be str, not {value}')
 
     def __repr__(self):
         attrs = []
-        for attr in ['_error', '_code']:  # should be hardcoded.
+        for attr in ('_error', '_code'):  # should be hardcoded.
             val = getattr(self, attr)
             if val:
                 attrs.append((attr, repr(val)))
             else:
                 attrs.append((attr, ''))
-            values = ', '.join(['%s=%s' % i for i in attrs])
+            values = ', '.join(['%s=%s' % i for i in attrs])  # pylint: disable=consider-using-f-string  # noqa
         return '<_K2hr3HttpResponse ' + values + '>'
 
     def __str__(self):
         attrs = {}
-        for attr in ['_error', '_code']:  # should be hardcoded.
+        for attr in ('_error', '_code'):  # should be hardcoded.
             val = getattr(self, attr)
             if val:
                 attrs[attr] = str(val)

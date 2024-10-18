@@ -40,12 +40,11 @@ from logging import StreamHandler
 from pathlib import Path
 import sys
 import time
-from typing import List, Set, Dict, Tuple, Optional  # noqa: pylint: disable=unused-import
+from typing import List, Set, Dict, Tuple, Optional, Union  # noqa: pylint: disable=unused-import
 
 import oslo_config  # type: ignore
 import oslo_messaging  # type: ignore
 
-from k2hr3_onsl import endpoint
 from k2hr3_osnl.cfg import K2hr3Conf
 from k2hr3_osnl.exceptions import K2hr3Error
 from k2hr3_osnl.exceptions import K2hr3ConfError
@@ -205,6 +204,7 @@ def listen(endpoints: list[K2hr3NotificationEndpoint]) -> int:
         return 1
 
     # 2. validate each endpoint
+    my_endpoint = None
     for my_endpoint in endpoints:
         if not isinstance(my_endpoint, K2hr3NotificationEndpoint):
             LOG.error('found an invalid endpoint, %s', my_endpoint)
@@ -214,7 +214,7 @@ def listen(endpoints: list[K2hr3NotificationEndpoint]) -> int:
                       my_endpoint.conf)
             return 1
 
-    conf = endpoint.conf
+    conf = my_endpoint.conf
     assert isinstance(conf, K2hr3Conf)
 
     try:

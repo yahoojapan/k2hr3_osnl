@@ -161,11 +161,8 @@ class _K2hr3UserAgent:
         :param value: url string
         :type value: str
         """
-        try:
-            if _K2hr3UserAgent.validate_url(value):
-                self._url = value
-        except _K2hr3UserAgentError:
-            raise
+        if _K2hr3UserAgent.validate_url(value):
+            self._url = value
 
     @staticmethod
     def validate_url(value):
@@ -202,8 +199,9 @@ class _K2hr3UserAgent:
         try:
             # https://github.com/python/cpython/blob/master/Modules/socketmodule.c#L5729
             ipaddress = socket.gethostbyname(domain)
-        except OSError as error:  # resolve failed
-            raise _K2hr3UserAgentError(f'unresolved domain, {domain} {error}')
+        except OSError as e:  # resolve failed
+            raise _K2hr3UserAgentError(
+                f'unresolved domain, {domain} {e}') from e  # noqa
 
         LOG.debug('%s resolved %s', domain, ipaddress)
 
@@ -218,7 +216,7 @@ class _K2hr3UserAgent:
         return True
 
     @property
-    def ips(self) -> List[str]:  # public.
+    def ips(self) -> list[str]:  # public.
         """Gets the ipaddress list.
 
         :returns: url string
