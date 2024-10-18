@@ -58,13 +58,12 @@ from k2hr3_osnl.exceptions import _K2hr3UserAgentError
 from k2hr3_osnl.useragent import _K2hr3UserAgent
 
 here = path.abspath(path.dirname(__file__))
-conf_file_path = Path(sep.join([here,
-                                'k2hr3-osnl.conf'])).resolve()
-broken_conf_file_path = Path(
-    sep.join([here, 'k2hr3-osnl.conf_broken'])).resolve()
+conf_file_path = Path(sep.join([here, 'k2hr3-osnl.conf'])).resolve()
+broken_conf_file_path = Path(sep.join([here,
+                                       'k2hr3-osnl.conf_broken'])).resolve()
 notification_conf_file_path = Path(
     sep.join([here, '../../',
-    '/tools/data/notifications_neutron.json'])).resolve()
+              '/tools/data/notifications_neutron.json'])).resolve()
 LOG = logging.getLogger(__name__)
 
 
@@ -93,8 +92,8 @@ class TestK2hr3UserAgent(unittest.TestCase):
 
         the_exception = cm.exception
         self.assertEqual(
-            the_exception.msg, 'conf is a K2hr3Conf instance, not {}'.format(
-                type(conf)))
+            the_exception.msg,
+            'conf is a K2hr3Conf instance, not {}'.format(type(conf)))
 
     def test_k2hr3useragent_construct_conf_validation_error(self):
         """Checks if the url in conf is invalid."""

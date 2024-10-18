@@ -68,7 +68,8 @@ class _K2hr3UserAgent:
             _K2hr3UserAgent.validate_url(conf.k2hr3.api_url)
         except _K2hr3UserAgentError as error:
             raise _K2hr3UserAgentError(
-                'a valid url is expected, not {conf.k2hr3.api_url)') from error
+                f'a valid url is expected, not {conf.k2hr3.api_url}'
+            ) from error
 
         self._conf = conf
         self._url = conf.k2hr3.api_url
@@ -178,7 +179,7 @@ class _K2hr3UserAgent:
             scheme, url_string = value.split('://', maxsplit=2)
         except ValueError as error:
             raise _K2hr3UserAgentError(
-                f'cheme should contain ://, not {value}') from error
+                f'scheme should contain ://, not {value}') from error
         if scheme not in ('http', 'https'):
             raise _K2hr3UserAgentError(
                 f'scheme should be http or http, not {scheme}')
