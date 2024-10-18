@@ -20,6 +20,8 @@
 
 sphinx-autoapi
 sphinx-rtd-theme
+oslo.config
+oslo.messaging
 
 #
 # Local variables:
