@@ -17,7 +17,7 @@
 # CREATE:   Tue Sep 11 2018
 # REVISION:
 #
-"""Sends http requests to the k2hr3 api. Classes in this module are not public."""
+"""Response fromthe k2hr3 api."""
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
@@ -31,6 +31,7 @@ LOG = logging.getLogger(__name__)
 
 
 class _K2hr3HttpResponse:
+
     def __init__(self):
         self._code = -1  # http status code from api server
         self._error = ''
@@ -46,7 +47,7 @@ class _K2hr3HttpResponse:
 
     @code.setter
     def code(self, value: int) -> None:  # public.
-        """Sets the HTTP status code.
+        """Set the HTTP status code.
 
         :param value: HTTP status code
         :type value: int
@@ -69,7 +70,7 @@ class _K2hr3HttpResponse:
 
     @error.setter
     def error(self, value: str) -> None:  # public.
-        """Sets the HTTP error.
+        """Set the HTTP error.
 
         :param value: HTTP error
         :type value: str
@@ -102,8 +103,9 @@ class _K2hr3HttpResponse:
                 attrs[attr] = ""
         values = ''
         for key, value in attrs.items():
-            values += '{}={} '.format(key, value)
+            values += f'{key}={value} '
         return '<_K2hr3HttpResponse ' + values + '>'
+
 
 #
 # EOF

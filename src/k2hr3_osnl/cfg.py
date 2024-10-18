@@ -52,31 +52,29 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
     """
 
     def __init__(self, path: Path) -> None:
-        """Initializes a K2hr3Conf object.
+        """Initialize a K2hr3Conf object.
 
         :param path: configuration file path
         :type path: Path
         :raises K2hr3ConfError: if invalid augment or file parse error.
         """
         if isinstance(path, Path) is False:
-            raise K2hr3ConfError('Path expected, not {}'.format(
-                type(path).__name__))
+            raise K2hr3ConfError(f'Path expected, not {type(path).__name__}')
         if path.exists() is False:
             raise K2hr3ConfError('path must exist, not {}'.format(path))
         if path.is_file() is False:
-            raise K2hr3ConfError(
-                'path must be a regular file, not {}'.format(path))
+            raise K2hr3ConfError(f'path must be a regular file, not {path}')
         try:
             with path.open():  # try reading
                 LOG.debug('successfully opened.')
-        except OSError as error:
+        except OSError as e:
             raise K2hr3ConfError(
-                'path must be a readable regular file, not {}'.format(error))
+                f'path must be a readable regular file, not {e}') from e
 
         self._path = path  # The path is valid and a Path object is immutable.
 
         try:
-            super(K2hr3Conf, self).__init__()  # calls the oslo_config init.
+            super().__init__()  # calls the oslo_config init.
         except Exception as error:
             raise K2hr3ConfError('initialization error') from error
 
@@ -87,7 +85,7 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
             raise error
 
     def _parse_config(self) -> bool:
-        """Parses a configration file.
+        """Parse a configration file.
 
         A protected method called in the __init__().
         You can implement your own _parse_config in your own class which is
@@ -100,23 +98,22 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
         """
         assert isinstance(self._path, Path)
 
-        oslo = cfg.OptGroup(
-            name='oslo_messaging_notifications', title='OsloGroupSettings')
+        oslo = cfg.OptGroup(name='oslo_messaging_notifications',
+                            title='OsloGroupSettings')
         self.register_group(oslo)
         oslo_opts = [
-            cfg.StrOpt(
-                'event_type',
-                default=r'^port\.delete\.end$',
-                help='event_type'),
-            cfg.StrOpt(
-                'publisher_id', default='^network.*$', help='publisher_id'),
+            cfg.StrOpt('event_type',
+                       default=r'^port\.delete\.end$',
+                       help='event_type'),
+            cfg.StrOpt('publisher_id',
+                       default='^network.*$',
+                       help='publisher_id'),
             cfg.DictOpt('context', default=None, help='context'),
             cfg.DictOpt('metadata', default=None, help='metadata'),
             cfg.DictOpt('payload', default=None, help='payload'),
-            cfg.StrOpt(
-                'transport_url',
-                default='rabbit://guest:guest@127.0.0.1:5672/',
-                help='transport_url'),
+            cfg.StrOpt('transport_url',
+                       default='rabbit://guest:guest@127.0.0.1:5672/',
+                       help='transport_url'),
             cfg.StrOpt('topic', default='notifications', help='topic'),
             cfg.StrOpt('exchange', default='neutron', help='exchange'),
             cfg.StrOpt('executor', default='threading', help='executor'),
@@ -131,23 +128,19 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
         k2hr3 = cfg.OptGroup(name='k2hr3', title='K2hr3GroupSettings')
         self.register_group(k2hr3)
         k2hr3_opts = [
-            cfg.StrOpt(
-                'api_url',
-                default='https//localhost/v1/role',
-                help='k2hr3 api Url'),
-            cfg.IntOpt(
-                'timeout_seconds',
-                default=30,
-                help='connection and timeout in second'),
+            cfg.StrOpt('api_url',
+                       default='https//localhost/v1/role',
+                       help='k2hr3 api Url'),
+            cfg.IntOpt('timeout_seconds',
+                       default=30,
+                       help='connection and timeout in second'),
             cfg.IntOpt('max_retries', default=5, help='max retry count'),
-            cfg.IntOpt(
-                'retry_interval_seconds',
-                default=60,
-                help='interval seconds to wait until next retry'),
-            cfg.BoolOpt(
-                'allow_self_signed_cert',
-                default=False,
-                help='allow self-signed certificate'),
+            cfg.IntOpt('retry_interval_seconds',
+                       default=60,
+                       help='interval seconds to wait until next retry'),
+            cfg.BoolOpt('allow_self_signed_cert',
+                        default=False,
+                        help='allow self-signed certificate'),
             cfg.BoolOpt(
                 'requeue_on_error',
                 default=False,
@@ -158,17 +151,15 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
         self.register_opt(
             cfg.StrOpt('log_file', default='sys.stderr', help='log file'))
         self.register_opt(
-            cfg.StrOpt(
-                'debug_level',
-                default='info',
-                choices=('debug', 'info', 'warn', 'error', 'notset'),
-                help='debug level'))
+            cfg.StrOpt('debug_level',
+                       default='info',
+                       choices=('debug', 'info', 'warn', 'error', 'notset'),
+                       help='debug level'))
         self.register_opt(
-            cfg.StrOpt(
-                'libs_debug_level',
-                default='warn',
-                choices=('debug', 'info', 'warn', 'error'),
-                help='log level of dependent libs'))
+            cfg.StrOpt('libs_debug_level',
+                       default='warn',
+                       choices=('debug', 'info', 'warn', 'error'),
+                       help='log level of dependent libs'))
 
         try:
             # ConfigFileAction returns nothing.
@@ -176,9 +167,10 @@ class K2hr3Conf(cfg.ConfigOpts):  # public class instantiated in __main__
             self(['--config-file', str(self._path)])
             LOG.debug('%s successfully parsed', str(self._path))
         except (cfg.ConfigFileParseError, cfg.ConfigFileValueError) as error:
-            raise K2hr3ConfError('parse error, {}'.format(error)) from error
+            raise K2hr3ConfError(f'parse error, {error}') from error
 
         return True
+
 
 #
 # EOF

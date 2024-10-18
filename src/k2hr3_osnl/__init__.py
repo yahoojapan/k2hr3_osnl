@@ -17,7 +17,6 @@
 # CREATE:   Tue Sep 11 2018
 # REVISION:
 #
-
 """K2hr3 OpenStack Notification message Listener."""
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
@@ -46,8 +45,11 @@ from typing import List, Set, Dict, Tuple, Optional  # noqa: pylint: disable=unu
 import oslo_config  # type: ignore
 import oslo_messaging  # type: ignore
 
+from k2hr3_onsl import endpoint
 from k2hr3_osnl.cfg import K2hr3Conf
-from k2hr3_osnl.exceptions import K2hr3Error, K2hr3ConfError, K2hr3NotificationEndpointError
+from k2hr3_osnl.exceptions import K2hr3Error
+from k2hr3_osnl.exceptions import K2hr3ConfError
+from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError
 from k2hr3_osnl.endpoint import K2hr3NotificationEndpoint
 
 LOG = logging.getLogger(__name__)
@@ -57,7 +59,7 @@ if sys.platform.startswith('win'):
 
 
 def version() -> str:
-    """Returns a version of k2hr3_osnl package.
+    """Return a version of k2hr3_osnl package.
 
     :returns: version
     :rtype: str
@@ -66,44 +68,36 @@ def version() -> str:
 
 
 def main() -> int:
-    """Runs a oslo_messaging notification listener for k2hr3.
+    """Run a oslo_messaging notification listener for k2hr3.
 
     You can configure the listener by the config file.
-
     Simple usage:
 
     $ k2hr3_osnl -c etc/k2hr3_osnl.config
-
-    :returns:
-        0 if success, otherwise 1.
-    :rtype:
-        int
     """
     parser = argparse.ArgumentParser(
         description='An oslo.messaging notification listener for k2hr3.')
-    parser.add_argument(
-        '-c',
-        '--config-file',
-        dest='config_file',
-        default='/etc/k2hr3/k2hr3_osnl.conf',
-        help='config file path')
+    parser.add_argument('-c',
+                        '--config-file',
+                        dest='config_file',
+                        default='/etc/k2hr3/k2hr3_osnl.conf',
+                        help='config file path')
     parser.add_argument(
         '-d',
         dest='debug_level',
         choices=('debug', 'info', 'warn', 'error', 'critical'),
         help='debug level. default: defined in the config_file')
-    parser.add_argument(
-        '-l',
-        dest='libs_debug_level',
-        choices=('debug', 'info', 'warn', 'error', 'critical'),
-        help='dependent libraries loglevel. default: defined in the config_file'
-    )
+    parser.add_argument('-l',
+                        dest='libs_debug_level',
+                        choices=('debug', 'info', 'warn', 'error', 'critical'),
+                        help='dependent libraries loglevel.')
     parser.add_argument(
         '-f',
         dest='log_file',
         help='log file path. default: defined in the config_file')
-    parser.add_argument(
-        '-v', action='version', version='%(prog)s ' + __version__)
+    parser.add_argument('-v',
+                        action='version',
+                        version='%(prog)s ' + __version__)
     args = parser.parse_args()
 
     try:
@@ -128,13 +122,11 @@ _nametolevel = {
 }
 
 
-def _configure_logger(args, conf) -> bool:
-    """Configures logger settings by args and conf.
+def _configure_logger(args, conf) -> bool:  # noqa  # pylint: disable=missing-type-doc
+    """Configure logger settings by args and conf.
 
     :param args: command line args
-    :type argparse: command line args
     :param conf: configuration
-    :type K2hr3Conf: configuration
     :returns: True if success, otherwise False
     :rtype: bool
     """
@@ -149,7 +141,8 @@ def _configure_logger(args, conf) -> bool:
 
     # 2. formatter
     formatter = logging.Formatter(
-        '%(asctime)-15s %(levelname)s %(name)s:%(lineno)d %(message)s')  # hardcoding
+        '%(asctime)-15s %(levelname)s %(name)s:%(lineno)d %(message)s'
+    )  # hardcoding
 
     # 3. log_file
     if args.log_file is not None:
@@ -157,22 +150,23 @@ def _configure_logger(args, conf) -> bool:
         # if unable to open it, use default(stderr).
 
         # Add the log message handler to the logger
-        handler = TimedRotatingFileHandler(
-            args.log_file, when='midnight', encoding='UTF-8', backupCount=31)
+        handler = TimedRotatingFileHandler(args.log_file,
+                                           when='midnight',
+                                           encoding='UTF-8',
+                                           backupCount=31)
         handler.setFormatter(formatter)
         LOG.addHandler(handler)
     else:
-        if conf.log_file == 'sys.stderr':
+        if conf.log_file == 'sys.stderr':  # pylint: disable=else-if-used
             stream_handler = StreamHandler(sys.stderr)
             stream_handler.setFormatter(formatter)
             LOG.addHandler(stream_handler)
         else:
             # Add the log message handler to the logger
-            handler = TimedRotatingFileHandler(
-                conf.log_file,
-                when='midnight',
-                encoding='UTF-8',
-                backupCount=31)
+            handler = TimedRotatingFileHandler(conf.log_file,
+                                               when='midnight',
+                                               encoding='UTF-8',
+                                               backupCount=31)
             handler.setFormatter(formatter)
             LOG.addHandler(handler)
 
@@ -194,8 +188,8 @@ def _configure_logger(args, conf) -> bool:
     return True
 
 
-def listen(endpoints: List[K2hr3NotificationEndpoint]) -> int:
-    """Runs a oslo_messaging notification listener for k2hr3.
+def listen(endpoints: list[K2hr3NotificationEndpoint]) -> int:
+    """Run a oslo_messaging notification listener for k2hr3.
 
     This function is a library endpoint to start a oslo_messaging notification
     listener for k2hr3.
@@ -204,20 +198,20 @@ def listen(endpoints: List[K2hr3NotificationEndpoint]) -> int:
     :type endpoints: list of K2hr3NotificationEndpoint
     :returns: 0 if success, otherwise 1.
     :rtype: int
-    """
+    """  # noqa
     # 1. validate endpoints
     if not isinstance(endpoints, list) or len(endpoints) == 0:
         LOG.error('invalid endpoints, %s', endpoints)
         return 1
 
     # 2. validate each endpoint
-    for endpoint in endpoints:
-        if not isinstance(endpoint, K2hr3NotificationEndpoint):
-            LOG.error('found an invalid endpoint, %s', endpoint)
+    for my_endpoint in endpoints:
+        if not isinstance(my_endpoint, K2hr3NotificationEndpoint):
+            LOG.error('found an invalid endpoint, %s', my_endpoint)
             return 1
-        if not isinstance(endpoint.conf, K2hr3Conf):  # this never happens.
+        if not isinstance(my_endpoint.conf, K2hr3Conf):  # this never happens.
             LOG.error('found an invalid conf in an endpoint, %s',
-                      endpoint.conf)
+                      my_endpoint.conf)
             return 1
 
     conf = endpoint.conf

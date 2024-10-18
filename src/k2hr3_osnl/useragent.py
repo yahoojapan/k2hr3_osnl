@@ -17,7 +17,7 @@
 # CREATE:   Tue Sep 11 2018
 # REVISION:
 #
-"""Sends http requests to the k2hr3 api. Classes in this module are not public."""
+"""Send HTTP requests to the k2hr3 api."""
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
@@ -32,7 +32,7 @@ import time
 import urllib
 import urllib.parse
 import urllib.request
-from urllib.error import ContentTooShortError, HTTPError, URLError
+from urllib.error import HTTPError, URLError
 import uuid
 
 from typing import List, Set, Dict, Tuple, Optional, Union  # noqa: pylint: disable=unused-import
@@ -54,22 +54,22 @@ class _K2hr3UserAgent:
     """Send a http/https request to the K2hr3 WebAPI."""
 
     def __init__(self, conf: K2hr3Conf) -> None:
-        """Initializes attributes.
+        """Initialize attributes.
 
         :param conf: K2hr3Conf object.
-        :type K2hr3Conf: K2hr3Conf
+        :type K2hr3Cof: K2hr3Conf
         :raises K2hr3UserAgentError: api_url validation error.
         """
         # api_url validated for myself.
         if isinstance(conf, K2hr3Conf) is False:
             raise _K2hr3UserAgentError(
-                'conf is a K2hr3Conf instance, not {}'.format(type(conf)))
+                f'conf is a K2hr3Conf instance, not {type(conf)}')
         try:
             _K2hr3UserAgent.validate_url(conf.k2hr3.api_url)
         except _K2hr3UserAgentError as error:
             raise _K2hr3UserAgentError(
-                'a valid url is expected, not {}'.format(
-                    conf.k2hr3.api_url)) from error
+                'a valid url is expected, not {conf.k2hr3.api_url)') from error
+
         self._conf = conf
         self._url = conf.k2hr3.api_url
         # other params validated in oslo_config.
@@ -82,27 +82,26 @@ class _K2hr3UserAgent:
         self._params = {'extra': 'openstack-auto-v1'}
         self._headers = {
             'User-Agent':
-            'Python-k2hr3_ua/{}.{}'.format(sys.version_info[0],
-                                           sys.version_info[1])
+            f'Python-k2hr3_ua/{sys.version_info[0]}.{sys.version_info[1]}'
         }
         self._response = _K2hr3HttpResponse()
         LOG.debug('useragent initialized.')
 
     @property
-    def headers(self) -> Dict[str, str]:
+    def headers(self) -> dict[str, str]:
         """Returns the headers.
 
         :returns: Request headers
-        :rtype: Dict
+        :rtype: dict
         """
         return self._headers
 
     @property
-    def params(self) -> Dict[str, str]:
+    def params(self) -> dict[str, str]:
         """Returns the url params.
 
         :returns: Url params
-        :rtype: Dict
+        :rtype: dict
         """
         return self._params
 
@@ -135,7 +134,7 @@ class _K2hr3UserAgent:
 
     @method.setter
     def method(self, value: str) -> None:
-        """Sets the http request method string.
+        """Set the http request method string.
 
         :param value: http request method string
         :type value: str
@@ -144,8 +143,7 @@ class _K2hr3UserAgent:
             LOG.debug('http request method is %s', value)
             self._method = value
         else:
-            raise _K2hr3UserAgentError(
-                'method should be string, not {}'.format(value))
+            raise _K2hr3UserAgentError(f'method should be string, not {value}')
 
     @property
     def url(self) -> str:  # public.
@@ -158,7 +156,7 @@ class _K2hr3UserAgent:
 
     @url.setter
     def url(self, value: str) -> None:  # public.
-        """Sets the url string.
+        """Set the url string.
 
         :param value: url string
         :type value: str
@@ -171,7 +169,7 @@ class _K2hr3UserAgent:
 
     @staticmethod
     def validate_url(value):
-        """Returns True if given string is a url.
+        """Return True if given string is a url.
 
         :param value: a url like string
         :type value: str
@@ -183,38 +181,35 @@ class _K2hr3UserAgent:
             scheme, url_string = value.split('://', maxsplit=2)
         except ValueError as error:
             raise _K2hr3UserAgentError(
-                'scheme should contain ://, not {}'.format(value)) from error
+                f'cheme should contain ://, not {value}') from error
         if scheme not in ('http', 'https'):
             raise _K2hr3UserAgentError(
-                'scheme should be http or http, not {}'.format(scheme))
-        else:
-            LOG.debug('scheme is %s', scheme)
+                f'scheme should be http or http, not {scheme}')
+
+        LOG.debug('scheme is %s', scheme)
 
         matches = re.match(
             r'(?P<domain>[\w|\.]+)?(?P<port>:\d{2,5})?(?P<path>[\w|/]*)?',
             url_string)
         if matches is None:
             raise _K2hr3UserAgentError(
-                'the argument seems not to be a url string, {}'.format(value))
+                f'the argument seems not to be a url string, {value}')
 
         # domain must be resolved.
         domain = matches.group('domain')
         if domain is None:
-            raise _K2hr3UserAgentError(
-                'url contains no domain, {}'.format(value))
+            raise _K2hr3UserAgentError(f'url contains no domain, {value}')
         try:
             # https://github.com/python/cpython/blob/master/Modules/socketmodule.c#L5729
             ipaddress = socket.gethostbyname(domain)
         except OSError as error:  # resolve failed
-            raise _K2hr3UserAgentError('unresolved domain, {} {}'.format(
-                domain, error))
-        else:
-            LOG.debug('%s resolved %s', domain, ipaddress)
+            raise _K2hr3UserAgentError(f'unresolved domain, {domain} {error}')
+
+        LOG.debug('%s resolved %s', domain, ipaddress)
 
         # path(optional)
         if matches.group('path') is None:
-            raise _K2hr3UserAgentError(
-                'url contains no path, {}'.format(value))
+            raise _K2hr3UserAgentError(f'url contains no path, {value}')
         path = matches.group('path')
         # port(optional)
         port = matches.group('port')
@@ -233,7 +228,7 @@ class _K2hr3UserAgent:
 
     @ips.setter
     def ips(self, value: str) -> None:  # public.
-        """Sets ip or ips to the ipaddress list.
+        """Set ip or ips to the ipaddress list.
 
         :param value: ipaddress(str or list)
         :type value: object
@@ -244,8 +239,7 @@ class _K2hr3UserAgent:
         elif isinstance(value, str):
             ips = [value]
         else:
-            raise _K2hr3UserAgentError(
-                'ips must be list or str, not {}'.format(value))
+            raise _K2hr3UserAgentError(f'ips must be list or str, not {value}')
         for ipaddress in ips:
             if isinstance(ipaddress, str) is False:
                 raise _K2hr3UserAgentError(
@@ -259,12 +253,12 @@ class _K2hr3UserAgent:
                 try:
                     socket.inet_pton(socket.AF_INET6, ipaddress)
                     self._ips += [ipaddress]
-                except OSError as error:
+                except OSError as e:
                     LOG.error('neither ip version4 nor version6 string %s %s',
-                              ipaddress, error)
+                              ipaddress, e)
                     raise _K2hr3UserAgentError(
-                        'ip must be valid string, not {} {}'.format(
-                            ipaddress, error))
+                        f'ip must be valid string, not {ipaddress} {e}') from e
+
         self._ips = ips  # overwrite
         LOG.debug('ips=%s', ips)
         # Note:
@@ -282,21 +276,20 @@ class _K2hr3UserAgent:
 
     @instance_id.setter
     def instance_id(self, value: str) -> None:  # publc.
-        """Sets instance id.
+        """Set instance id.
 
         :param value: instance id
         :type value: str
         """
         if isinstance(value, str) is False:
             raise _K2hr3UserAgentError(
-                'Please pass UUID as a string, not {}'.format(value))
+                f'Please pass UUID as a string, not {value}')
         try:
             if value:
                 uuid.UUID(value)
                 self._instance_id = value
-        except ValueError as error:
-            raise _K2hr3UserAgentError('Invalid UUID, {} {}'.format(
-                value, error))
+        except ValueError as e:
+            raise _K2hr3UserAgentError(f'Invalid UUID, {value} {e}') from e
         # Note:
         # parameter name is 'cuk' when calling r3api.
         self._params['cuk'] = self._instance_id
@@ -312,7 +305,7 @@ class _K2hr3UserAgent:
 
     @allow_self_signed_cert.setter
     def allow_self_signed_cert(self, value: bool) -> None:  # public.
-        """Sets the flag of self signed certificate or not.
+        """Set the flag of self signed certificate or not.
 
         :param value: True if allow self signed certificate to use.
         :type value: bool
@@ -320,13 +313,12 @@ class _K2hr3UserAgent:
         if isinstance(value, bool):
             self._allow_self_signed_cert = value
         else:
-            raise _K2hr3UserAgentError(
-                'Boolean value expected, not {}'.format(value))
+            raise _K2hr3UserAgentError(f'Boolean value expected, not {value}')
 
-    def _send_internal(self, url: str, params: Dict[str, str],
-                       headers: Dict[str, str],
-                       method: str) -> bool:  # non-public.
-        """Sends a http request.
+    def _send_internal(self, url: str, params: dict[str, str],
+                       headers: dict[str,
+                                     str], method: str) -> bool:  # non-public.
+        """Send a http request.
 
         :returns: True if success, otherwise False
         :rtype: bool
@@ -341,13 +333,16 @@ class _K2hr3UserAgent:
         LOG.debug('_send called by url %s params %s headers %s method %s', url,
                   params, headers, method)
 
-        qstring = urllib.parse.urlencode(params, quote_via=urllib.parse.quote)  # type: ignore
-        req = urllib.request.Request(
-            '?'.join([url, qstring]), headers=headers, method=method)
+        qstring = urllib.parse.urlencode(
+            params, quote_via=urllib.parse.quote)  # type: ignore
+        req = urllib.request.Request('?'.join([url, qstring]),
+                                     headers=headers,
+                                     method=method)
         if req.type not in ('http', 'https'):
             self._response.error = 'http or https, not {}'.format(req.type)
             LOG.error(self._response)
             return False
+
         agent_error = _AgentError.NONE
         try:
             ctx = None
@@ -368,8 +363,8 @@ class _K2hr3UserAgent:
             LOG.error(
                 'Could not complete the request. code %s reason %s headers %s',
                 error.code, error.reason, error.headers)
-            agent_error = _AgentError.FATAL
-        except (ContentTooShortError, URLError) as error:
+            agent_error = _AgentError.FATAL  # pylint: disable=redefined-variable-type  # noqa
+        except URLError as error:
             # https://github.com/python/cpython/blob/master/Lib/urllib/error.py#L73
             LOG.error('Could not read the server. reason %s', error.reason)
             agent_error = _AgentError.FATAL
@@ -397,7 +392,7 @@ class _K2hr3UserAgent:
         return False
 
     def send(self) -> bool:  # public.
-        """Sends a http request.
+        """Send a http request.
 
         :returns: True if success, otherwise False
         :rtype: bool
@@ -417,7 +412,7 @@ class _K2hr3UserAgent:
 
     def __repr__(self):
         attrs = []
-        for attr in ['_url', '_params', '_headers', '_method']:
+        for attr in ('_url', '_params', '_headers', '_method'):
             val = getattr(self, attr)
             if val:
                 attrs.append((attr, repr(val)))
@@ -426,7 +421,7 @@ class _K2hr3UserAgent:
 
     def __str__(self):
         attrs = {}
-        for attr in ['_url', '_params', '_headers', '_method']:
+        for attr in ('_url', '_params', '_headers', '_method'):
             val = getattr(self, attr)
             if val:
                 attrs[attr] = str(val)
@@ -434,8 +429,9 @@ class _K2hr3UserAgent:
                 LOG.debug('%s empty', attr)
         values = ''
         for key, value in attrs.items():
-            values += '{}={} '.format(key, value)
+            values += f'{key}={value} '
         return '<_K2hr3UserAgent ' + values + '>'
+
 
 #
 # Local variables:

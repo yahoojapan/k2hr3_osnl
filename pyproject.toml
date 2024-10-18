@@ -3,7 +3,7 @@
 #
 # Copyright 2018 Yahoo Japan Corporation
 #
-# K2HR3 is K2hdkc based Resource and Roles and policy Rules, gathers 
+# K2HR3 is K2hdkc based Resource and Roles and policy Rules, gathers
 # common management information for the cloud.
 # K2HR3 can dynamically manage information as "who", "what", "operate".
 # These are stored as roles, resources, policies in K2hdkc, and the
@@ -13,7 +13,7 @@
 # the licenses file that was distributed with this source code.
 #
 # AUTHOR:   Hirotaka Wakabayashi
-# CREATE:   Tue Sep 11 2018 
+# CREATE:   Tue Sep 11 2018
 # REVISION:
 #
 [build-system]
@@ -26,11 +26,11 @@ dynamic = ["version"]
 requires-python = ">=3.9"
 authors = [
   {name = "Hirotaka Wakabayashi", email = "hiwakaba@lycorp.co.jp"},
-  {name = "Takeshi Nakatani", email = "ggtakec@gmail.com"}, 
+  {name = "Takeshi Nakatani", email = "ggtakec@gmail.com"},
 ]
 maintainers = [
   {name = "Hirotaka Wakabayashi", email = "hiwakaba@lycorp.co.jp"},
-  {name = "Takeshi Nakatani", email = "ggtakec@gmail.com"}, 
+  {name = "Takeshi Nakatani", email = "ggtakec@gmail.com"},
 ]
 description = "An OpenStack notification listener for the K2HR3 role-based ACL system"
 readme = "README.rst"
@@ -78,16 +78,16 @@ legacy_tox_ini = """
     requires = tox>=4
     env_list = lint, type, py{311}
     skip_missing_interpreters = True
-    
+
     [testenv]
     deps = pytest
     commands = pytest
     package = wheel
-    
+
     [testenv:lint]
     deps = pylint
     commands = pylint src/k2hr3_osnl
-    
+
     [testenv:type]
     description = run type checks
     deps =
@@ -637,4 +637,4 @@ redefining-builtins-modules = ["six.moves", "past.builtins", "future.builtins", 
 # c-basic-offset: 4
 # End:
 # vim600: expandtab sw=4 ts=4 fdm=marker
-# vim<600: expandtab 
+# vim<600: expandtab

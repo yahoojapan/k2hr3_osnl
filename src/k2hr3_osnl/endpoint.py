@@ -27,17 +27,20 @@ import sys
 import traceback
 from typing import List, Set, Dict, Tuple, Optional, Any  # noqa: pylint: disable=unused-import
 
-from oslo_messaging import NotificationFilter, NotificationResult  # type: ignore
+from oslo_messaging import NotificationFilter, NotificationResult  # type: ignore  # noqa
 
 from k2hr3_osnl.cfg import K2hr3Conf
 from k2hr3_osnl.useragent import _K2hr3UserAgent
-from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError, _K2hr3UserAgentError
+from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError
+from k2hr3_osnl.exceptions import _K2hr3UserAgentError
 
 LOG = logging.getLogger(__name__)
 
 
 class K2hr3NotificationEndpoint:  # public class instantiated in main
-    """An endpoint called by a OpenStack dispatcher when a filtered notification message arrives.
+    """An endpoint called by a OpenStack dispatcher.
+
+    when a filtered notification message arrives, the endpoint calls.
 
     Simple usage:
 
@@ -55,7 +58,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
     """
 
     def __init__(self, conf: K2hr3Conf) -> None:  # public called in __main__
-        """Initializes attributes.
+        """Initialize attribute.
 
         We instantiate the NotificationFilter instance as the 'filter_rule'
         attribute here which is used to filter notifications that an
@@ -72,7 +75,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
         """
         if isinstance(conf, K2hr3Conf) is False:
             raise K2hr3NotificationEndpointError(
-                'conf is a K2hr3Conf instance, not {}'.format(type(conf)))
+                f'conf is a K2hr3Conf instance, not {type(conf)}')
 
         context = conf.oslo_messaging_notifications.context
         metadata = conf.oslo_messaging_notifications.metadata
@@ -117,13 +120,13 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
         """Returns the K2hr3Conf object."""
         return self._conf
 
-    def _payload_to_params(self, payload: Any) -> Dict[str, object]:  # pylint: disable=no-self-use
-        """Parses a payload data.
+    def _payload_to_params(self, payload: Any) -> dict[str, object]:
+        """Parse a payload data.
 
         _payload_to_params is a protected method called in the info().
-        You can implement your own _payload_to_params in your own class which is derived from
-        K2hr3NotificationEndpoint class if you want to parse your OpenStack notificatio messages
-        are different from us.
+        You can implement your own _payload_to_params in your own class which
+        is derived from K2hr3NotificationEndpoint class if you want to
+        parse your OpenStack notificatio messages are different from us.
 
         :param payload: payload is a dict object. the format is not simple.
         :type payload: dict
@@ -132,7 +135,8 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
                       params['cuk'] is expected to be a str object.
                       params['ips'] is expedted to be a list object.
         :rtype: dict
-        :raises K2hr3NotificationEndpointError: if the payload does not contain enough data.
+        :raises K2hr3NotificationEndpointError: if the payload does not
+        contain enough data.
         """
         assert [
             isinstance(payload, dict),
@@ -182,14 +186,13 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
 
         if params.get('cuk', None) is None:
             LOG.error('cuk is empty')
-            raise K2hr3NotificationEndpointError(
-                'no cuk in params, {}'.format(params))
+            raise K2hr3NotificationEndpointError(f'no cuk in params, {params}')
 
         LOG.debug(json.dumps(params, indent=4, sort_keys=True))
         return params
 
-    def __call_r3api(self, params: Dict[str, Any]) -> str:
-        """Calls the r3api.
+    def __call_r3api(self, params: dict[str, Any]) -> str:
+        """Call the r3api.
 
         :returns: NotificationResult.REQUEUE if failed to call the r3api.
                   Otherwise NotificationResult.HANDLED.
@@ -206,13 +209,15 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
             if params.get('ips', None):
                 agent.ips = params.get('ips', None)
             if agent.send():
-                LOG.debug('ok sent. %s code, %s', agent.instance_id, agent.code)
+                LOG.debug('ok sent. %s code, %s', agent.instance_id,
+                          agent.code)
                 return NotificationResult.HANDLED  # type: ignore
             LOG.error('no sent. %s error %s', agent.instance_id, agent.error)
             if self._conf.k2hr3.requeue_on_error is True:
                 LOG.warning('requeuing %s', agent.instance_id)
                 return NotificationResult.REQUEUE  # type: ignore
-            LOG.warning('handled %s, even if an error occurred.', agent.instance_id)
+            LOG.warning('handled %s, even if an error occurred.',
+                        agent.instance_id)
             return NotificationResult.HANDLED  # type: ignore
         except _K2hr3UserAgentError as error:
             LOG.error('k2hr3 exception %s', error)
@@ -224,16 +229,14 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
         except Exception as error:
             # Note:
             # unknown exception should be handled by upstream caller.
-            LOG.error('unknown exception. upstream caller catch this %s', error)
+            LOG.error('unknown exception. upstream caller catch this %s',
+                      error)
             raise
 
-    def info(
-            self,
-            context: Dict[str, object],
-            publisher_id: str,  # pylint: disable=too-many-arguments
-            event_type: str,
-            payload: Dict[str, object],
-            metadata: Dict[str, object]):
+    # yapf: disable
+    def info(self, context: dict[str, object],  # pylint: disable=unused-argument,too-many-positional-arguments  # noqa
+             publisher_id: str, event_type: str,
+             payload: dict[str, object], metadata: dict[str, object]):  # pylint: disable=unused-argument  # noqa
         """Notification endpoint in info priority.
 
         Notification messages that match the filter’s rules will be passed
@@ -241,7 +244,6 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
         dispatcher calls when messages in 'info' priority have arrived.
 
         Reference:
-
         - https://docs.openstack.org/oslo.messaging/latest/reference/notification_listener.html
         - https://github.com/openstack/oslo.messaging/blob/master/oslo_messaging/notify/dispatcher.py#L74
 
@@ -263,7 +265,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
         :param metadata: Metadata of a notification for NotificationFilter.
         :type metadata: dict
         :returns: NotificationResult.HANDLED or NotificationResult.REQUEUE
-        """
+        """  # noqa: E501
         assert [
             isinstance(payload, dict),  # We are interested in payload only.
         ]
@@ -275,12 +277,14 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
             params = self._payload_to_params(payload)
         except K2hr3NotificationEndpointError as error:
             # K2hr3NotificationEndpointError is a hard error.
-            # We don't raise an exception again since we should avoid infinite message parsing loop.
+            # We don't raise an exception again since we should avoid infinite
+            # message parsing loop.
             LOG.error('invalid payload %s', error)
             return NotificationResult.HANDLED
-        except Exception:  # pylint: disable=broad-except
+        except Exception:
             # Unknown exception should be treat as a hard error.
-            # We don't raise an exception again since we should avoid infinite message parsing loop.
+            # We don't raise an exception again since we should avoid infinite
+            # message parsing loop.
             exc_type, exc_value, exc_traceback = sys.exc_info()
             # Too much? https://docs.python.org/3/library/traceback.html
             LOG.error('exec_type %s exec_value %s traceback %s', exc_type,
@@ -294,7 +298,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
                 return NotificationResult.HANDLED
             LOG.info('NotificationResult.REQUEUE %s', params.get('cuk'))
             return NotificationResult.REQUEUE
-        except Exception:  # pylint: disable=broad-except
+        except Exception:
             # we should handle exceptions to exit from here properly.
             exc_type, exc_value, exc_traceback = sys.exc_info()
             # Too much? https://docs.python.org/3/library/traceback.html
@@ -302,9 +306,10 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
                       exc_value, repr(traceback.extract_tb(exc_traceback)))
         # return HANDLED for avoiding infinite loop.
         LOG.error(
-            'got an exception in r3api. handled the msg even if an error occurred.'
+            'got an exception in r3api. handled the msg even if an error occurred.'  # noqa
         )
         return NotificationResult.HANDLED
+
 
 #
 # Local variables:
