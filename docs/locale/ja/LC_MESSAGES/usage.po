@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Yahoo Japan Corporation
+# This file is distributed under the same license as the k2hr3_osnl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: k2hr3_osnl \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-17 16:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../usage.rst:3
+msgid "Usage"
+msgstr ""
+
+#: ../../usage.rst:5
+msgid ""
+"In this chapter I will explain how to configure the k2hr3_osnl. The "
+"k2hr3_osnl primarily consists of three parts of processing."
+msgstr ""
+
+#: ../../usage.rst:7 ../../usage.rst:37
+msgid "Listening to OpenStack service backend"
+msgstr ""
+
+#: ../../usage.rst:8
+msgid "Parsing messages from OpenStack service backend to extract an instance-id"
+msgstr ""
+
+#: ../../usage.rst:9
+msgid "Calling the k2hr3 api with the instance-id"
+msgstr ""
+
+#: ../../usage.rst:11
+msgid ""
+"``k2hr3_osnl.conf`` defines the k2hr3_osnl behavior. You can get the path"
+" by two commands."
+msgstr ""
+
+#: ../../usage.rst:30
+msgid "``/usr/local/etc/k2hr3/k2hr3_osnl.conf`` is it in this case."
+msgstr ""
+
+#: ../../usage.rst:32
+msgid ""
+"Please note all information here I describe is based on `OpenStack "
+"Rocky`_."
+msgstr ""
+
+#: ../../usage.rst:39
+msgid ""
+"The following 3 parameters define the listener behavior: "
+"``transport_url``, ``topic`` and ``exchange`` in k2hr3_osnl.conf."
+msgstr ""
+
+#: ../../usage.rst:41
+msgid ""
+"The ``transport_url`` specifies the address of OpenStack service backend "
+"and how to connect with it. oslo.messaging_ describes the syntax:"
+msgstr ""
+
+#: ../../usage.rst:45
+msgid "transport://user:pass@host1:port[,hostN:portN]/virtual_host"
+msgstr ""
+
+#: ../../usage.rst:47
+msgid ""
+"The transport value specifies the notification backend as one of "
+"**amqp**, RabbitMQ, Apache Kafka and other backend. The default backend "
+"is RabbitMQ. For Instance, assuming the backend service is RabbitMQ , the"
+" file might contain:"
+msgstr ""
+
+#: ../../usage.rst:54
+msgid "The setting above means:"
+msgstr ""
+
+#: ../../usage.rst:56
+msgid "rabbitmq is a backend server."
+msgstr ""
+
+#: ../../usage.rst:57
+msgid "user name is guest."
+msgstr ""
+
+#: ../../usage.rst:58
+msgid "password is guestpass."
+msgstr ""
+
+#: ../../usage.rst:59
+msgid "address is localhost."
+msgstr ""
+
+#: ../../usage.rst:60
+msgid "port is 5672."
+msgstr ""
+
+#: ../../usage.rst:62
+msgid ""
+"Please note username and password is required for security reason. "
+"`RabbitMQ User Management`_ describes how to add a username and password."
+msgstr ""
+
+#: ../../usage.rst:66
+msgid ""
+"The ``topic`` parameter identifies where a message should be sent or what"
+" messages the k2hr3_osnl is listening for. The OpenStack services emit "
+"messages by the `oslo.messaging Notifier`_ which requires ``topic(s)``. A"
+" default value of ``topic(s)`` is ``notifications`` which is the same "
+"with the k2hr3_osnl's default ``topic`` value. An example of what the "
+"file might contain is:"
+msgstr ""
+
+#: ../../usage.rst:75
+msgid ""
+"Please note the ``topic`` must be the same between OpenStack services and"
+" the k2hr3_osnl, because it is a part of subscriber queue name in "
+"OpenStack backend that the k2hr3_osnl listens to. So please remember you "
+"would need update it if OpenStack service administrators can change it "
+"the other value."
+msgstr ""
+
+#: ../../usage.rst:77
+msgid ""
+"The final parameter is ``exchange``. This parameter represents a "
+"container within which each service's topics are scoped. OpenStack "
+"services register the exchange when the send notifications by calling the"
+" set_transport_defaults_ function in oslo.messaging. The default value of"
+" ``exchange`` is 'openstack'."
+msgstr ""
+
+#: ../../usage.rst:81 ../../usage.rst:164 ../../usage.rst:227
+msgid "What I have explained in this chapter:"
+msgstr ""
+
+#: ../../usage.rst:83
+msgid "k2hr3_osnl connect with OpenStack service backend by transport_url."
+msgstr ""
+
+#: ../../usage.rst:84
+msgid ""
+"OpenStack services publish notifications to the configured exchange with "
+"a configured topic."
+msgstr ""
+
+#: ../../usage.rst:85
+msgid "The default topic name is ``notifications``. It can be changed."
+msgstr ""
+
+#: ../../usage.rst:86
+msgid ""
+"The exchange is almost same with the OpenStack service publishes the "
+"notification message."
+msgstr ""
+
+#: ../../usage.rst:89
+msgid "Parsing a message"
+msgstr ""
+
+#: ../../usage.rst:91
+msgid ""
+"A message format depends on your OpenStack service settings. Currently "
+"the k2hr3_osnl can parse the following 3 kinds of message."
+msgstr ""
+
+#: ../../usage.rst:93
+msgid "a message from OpenStack neutron"
+msgstr ""
+
+#: ../../usage.rst:94
+msgid "a versioned message from OpenStack nova"
+msgstr ""
+
+#: ../../usage.rst:95
+msgid "a non-versioned message from OpenStack nova"
+msgstr ""
+
+#: ../../usage.rst:97
+msgid "I will explain them one by one."
+msgstr ""
+
+#: ../../usage.rst:100
+msgid "Parsing a message from OpenStack neutron"
+msgstr ""
+
+#: ../../usage.rst:102
+msgid "We assume the following message from `OpenStack neutron`_."
+msgstr ""
+
+#: ../../usage.rst:133
+msgid ""
+"The ``event_type`` represents a event which OpenStack services send "
+"notification about and the ``publisher_id`` identifies who published the "
+"message. Let's see the 'oslo_messaging_notifications' group configuration"
+" to catch this message."
+msgstr ""
+
+#: ../../usage.rst:144
+msgid ""
+"The ``event_type`` and ``publisher_id`` define white rules that means "
+"k2hr3_osnl only parse the messages that match the filter’s rules. If your"
+" `Openstack neutron`_ emits a same message with this example, you can use"
+" the same configure with this example."
+msgstr ""
+
+#: ../../usage.rst:148
+msgid ""
+"Please note we assume the `OpenStack neutron`_ use the **messagingv2** "
+"driver_. If you don't know much about the driver what your `OpenStack "
+"neutron`_ uses, Please ask your OpenStack system administrator or "
+"investigate your /etc/neutron/neutron.conf. Here is my neutron.conf "
+"setting."
+msgstr ""
+
+#: ../../usage.rst:166
+msgid ""
+"k2hr3_osnl only listen to the message matches with defined in the "
+"configuration."
+msgstr ""
+
+#: ../../usage.rst:167
+msgid "Regular expression in filters is allowed."
+msgstr ""
+
+#: ../../usage.rst:171
+msgid "Parsing versioned messages from OpenStack nova"
+msgstr ""
+
+#: ../../usage.rst:173
+msgid ""
+"In this chapter I will explain how to configure the k2hr3_osnl to parse "
+"messages from `OpenStack nova`_. When we tested the k2hr3_osnl with "
+"`OpenStack neutron`_ with the driver_ configuration was **not** "
+"messagingv2, the k2hr3_osnl could not get any notification messages we "
+"expected. If you met with same situation, please try the configuration in"
+" this chapter."
+msgstr ""
+
+#: ../../usage.rst:178
+msgid "We assume the following message from `OpenStack nova`_."
+msgstr ""
+
+#: ../../usage.rst:210
+msgid ""
+"Here is a sample ``oslo_messaging_notifications`` group configuration "
+"k2hr3_osnl can read the message above."
+msgstr ""
+
+#: ../../usage.rst:221
+msgid ""
+"You will recognize all items other than transport_url are different with "
+"neutron's case! Each OpenStack service defines its own event_type. FYI: "
+"`OpenStack nova`_ defines many event types."
+msgstr ""
+
+#: ../../usage.rst:225
+msgid ""
+"https://docs.openstack.org/nova/latest/reference/notifications.html"
+"#existing-versioned-notifications"
+msgstr ""
+
+#: ../../usage.rst:229
+msgid ""
+"`OpenStack nova`_ publishes different messages format from `OpenStack "
+"neutron`_."
+msgstr ""
+
+#: ../../usage.rst:230
+msgid ""
+"k2hr3_osnl can read messages from `OpenStack nova`_ too by changing the "
+"configuration."
+msgstr ""
+
+#: ../../usage.rst:236
+msgid "List of configuration items"
+msgstr ""
+
+#: ../../usage.rst:238
+msgid ""
+"Settings in the configuration file define the k2hr3_osnl behavior except "
+"for loglevel. Loglevel augments override loglevel settings in "
+"configuration. If you want to change the loglevel only, you need not to "
+"change configuration file. use ``-d`` option."
+msgstr ""
+
+#: ../../usage.rst:260
+msgid "The configuration file consists of 3 parts."
+msgstr ""
+
+#: ../../usage.rst:262
+msgid "oslo_messaging_notifications"
+msgstr ""
+
+#: ../../usage.rst:263
+msgid "configurations for the oslo_messaging library."
+msgstr ""
+
+#: ../../usage.rst:264
+msgid "k2hr3"
+msgstr ""
+
+#: ../../usage.rst:265
+msgid "configurations for the K2HR3 system."
+msgstr ""
+
+#: ../../usage.rst:266
+msgid "DEFAULT"
+msgstr ""
+
+#: ../../usage.rst:267
+msgid "the others."
+msgstr ""
+
+#: ../../usage.rst:269
+msgid ""
+"The configuration file syntax is the \".INI\" format. Here is a default "
+"sample configuration."
+msgstr ""
+
+#: ../../usage.rst:298
+msgid "[DEFAULT]"
+msgstr ""
+
+#: ../../usage.rst:300
+msgid "debug_level"
+msgstr ""
+
+#: ../../usage.rst:301
+msgid ""
+"logging level. Each of debug, info, warning or error. (**default:** "
+"warning)."
+msgstr ""
+
+#: ../../usage.rst:303
+msgid "log_file"
+msgstr ""
+
+#: ../../usage.rst:304
+msgid "destination of logging. (**default:** sys.stderr)"
+msgstr ""
+
+#: ../../usage.rst:306
+msgid "libs_debug_level"
+msgstr ""
+
+#: ../../usage.rst:307
+msgid "log level. (**default:** warning)"
+msgstr ""
+
+#: ../../usage.rst:311
+msgid "[oslo_messaging_notifications]"
+msgstr ""
+
+#: ../../usage.rst:313
+msgid "event_type"
+msgstr ""
+
+#: ../../usage.rst:314
+msgid ""
+"event type of the notification message(**default:** "
+"^port\\.delete\\.end$)."
+msgstr ""
+
+#: ../../usage.rst:316
+msgid "publisher_id"
+msgstr ""
+
+#: ../../usage.rst:317
+msgid "publisher id of the notification message(**default:** ^network.*$)"
+msgstr ""
+
+#: ../../usage.rst:319
+msgid "transport_url"
+msgstr ""
+
+#: ../../usage.rst:320
+msgid "transport url(**default:** rabbit://guest:guest@127.0.0.1:5672/)"
+msgstr ""
+
+#: ../../usage.rst:322
+msgid "topic"
+msgstr ""
+
+#: ../../usage.rst:323
+msgid "topic of the notification message(**default:**  notifications)"
+msgstr ""
+
+#: ../../usage.rst:325
+msgid "exchange"
+msgstr ""
+
+#: ../../usage.rst:326
+msgid "exchange of the notification message(**default:**  neutron)"
+msgstr ""
+
+#: ../../usage.rst:328
+msgid "executor"
+msgstr ""
+
+#: ../../usage.rst:329
+msgid "executor of the listener(**default:**  threading)"
+msgstr ""
+
+#: ../../usage.rst:331
+msgid "pool n  pool identification of message queue(**default:**  k2hr3_osnl)"
+msgstr ""
+
+#: ../../usage.rst:334
+msgid "allow_requeue"
+msgstr ""
+
+#: ../../usage.rst:335
+msgid "allow requeue if error occurred(**default:**  True)"
+msgstr ""
+
+#: ../../usage.rst:338
+msgid "[k2hr3]"
+msgstr ""
+
+#: ../../usage.rst:340
+msgid "api_url"
+msgstr ""
+
+#: ../../usage.rst:341
+msgid "K2HR3 WebAPI Url(**default:** https://localhost/v1/role)."
+msgstr ""
+
+#: ../../usage.rst:343
+msgid "timeout_seconds"
+msgstr ""
+
+#: ../../usage.rst:344
+msgid "connection timeout in second(**default:** 30)"
+msgstr ""
+
+#: ../../usage.rst:346
+msgid "retries"
+msgstr ""
+
+#: ../../usage.rst:347
+msgid "retries(**default:** 3)"
+msgstr ""
+
+#: ../../usage.rst:349
+msgid "retry_interval_seconds"
+msgstr ""
+
+#: ../../usage.rst:350
+msgid "interval(**default:**  60)"
+msgstr ""
+
+#: ../../usage.rst:352
+msgid "allow_self_signed_cert"
+msgstr ""
+
+#: ../../usage.rst:353
+msgid "certification(**default:**  True)"
+msgstr ""
+
+#: ../../usage.rst:355
+msgid "requeue_on_error"
+msgstr ""
+
+#: ../../usage.rst:356
+msgid "error(**default:**  True)"
+msgstr ""
+

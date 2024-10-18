@@ -27,14 +27,12 @@ from typing import List, Set, Dict, Tuple, Optional  # noqa: pylint: disable=unu
 class K2hr3Error(Exception):
     """A base class of various exceptions from k2hr3_osnl package classes."""
 
-    pass
-
 
 class K2hr3ConfError(K2hr3Error):
-    """Raised when failed to instantiate a k2hr3Conf class."""
+    """Raise when failed to instantiate a k2hr3Conf class."""
 
     def __init__(self, msg: str = ""):
-        """Initializes members."""
+        """Initialize members."""
         self.msg = msg
 
 
@@ -42,7 +40,7 @@ class K2hr3NotificationEndpointError(K2hr3Error):
     """Raised when failed to instantiate a K2hr3NotificationEndpoint class."""
 
     def __init__(self, msg: str = ""):
-        """Initializes members."""
+        """Initialize members."""
         self.msg = msg
 
 
@@ -50,8 +48,9 @@ class _K2hr3UserAgentError(K2hr3Error):
     """Raised when failed to send request to K2hr3API in K2hr3Agent class."""
 
     def __init__(self, msg: str = ""):
-        """Initializes members."""
+        """Initialize members."""
         self.msg = msg
+
 
 #
 # EOF
