@@ -48,6 +48,7 @@ dill = "*"
 build = ">=0.10.0"
 "oslo.config" = ">=9.1.1"
 "oslo.messaging" = ">=14.2.0"
+typing_extensions = "*"
 
 #
 # Local variables:
