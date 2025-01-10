@@ -48,12 +48,3 @@ dill = "*"
 build = ">=0.10.0"
 "oslo.config" = ">=9.1.1"
 "oslo.messaging" = ">=14.2.0"
-
-#
-# Local variables:
-# tab-width: 4
-# c-basic-offset: 4
-# End:
-# vim600: noexpandtab sw=4 ts=4 fdm=marker
-# vim<600: noexpandtab sw=4 ts=4
-#

@@ -31,7 +31,7 @@ __all__ = [
     'version',
 ]
 __author__ = 'Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>'
-__version__ = '1.0.7'
+__version__ = '1.0.8'
 
 import argparse
 import logging
@@ -40,7 +40,6 @@ from logging import StreamHandler
 from pathlib import Path
 import sys
 import time
-from typing import List, Set, Dict, Tuple, Optional, Union  # noqa: pylint: disable=unused-import
 
 import oslo_config  # type: ignore
 import oslo_messaging  # type: ignore
