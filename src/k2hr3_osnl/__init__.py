@@ -40,7 +40,7 @@ from logging import StreamHandler
 from pathlib import Path
 import sys
 import time
-import typing_extensions
+import typing_extensions  # noqa: pylint: disable=unused-import
 from typing import List, Set, Dict, Tuple, Optional, Union  # noqa: pylint: disable=unused-import
 
 import oslo_config  # type: ignore
