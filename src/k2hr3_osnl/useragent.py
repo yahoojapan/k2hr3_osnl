@@ -241,8 +241,7 @@ class _K2hr3UserAgent:
             raise _K2hr3UserAgentError(f'ips must be list or str, not {value}')
         for ipaddress in ips:
             if isinstance(ipaddress, str) is False:
-                raise _K2hr3UserAgentError(
-                    'ip must be str, not {}'.format(ipaddress))
+                raise _K2hr3UserAgentError(f'ip must be str, not {ipaddress}')
             try:
                 # https://github.com/python/cpython/blob/master/Modules/socketmodule.c#L6172
                 socket.inet_pton(socket.AF_INET, ipaddress)
@@ -338,7 +337,7 @@ class _K2hr3UserAgent:
                                      headers=headers,
                                      method=method)
         if req.type not in ('http', 'https'):
-            self._response.error = 'http or https, not {}'.format(req.type)
+            self._response.error = f'http or https, not {req.type}'
             LOG.error(self._response)
             return False
 
@@ -367,8 +366,8 @@ class _K2hr3UserAgent:
             # https://github.com/python/cpython/blob/master/Lib/urllib/error.py#L73
             LOG.error('Could not read the server. reason %s', error.reason)
             agent_error = _AgentError.FATAL
-        except (socket.timeout, OSError) as error:  # temporary error
-            LOG.error('error(OSError, socket) %s', error)
+        except (socket.timeout) as error:  # temporary error
+            LOG.error('error(socket) %s', error)
             agent_error = _AgentError.TEMP
         finally:
             if agent_error == _AgentError.TEMP:
