@@ -236,7 +236,7 @@ def listen(endpoints: list[K2hr3NotificationEndpoint]) -> int:
         listener.start()
         LOG.info('Starting')
         while True:
-            time.sleep(1)
+            time.sleep(1)G
     except KeyboardInterrupt:
         LOG.info('Stopping')
         listener.stop()
