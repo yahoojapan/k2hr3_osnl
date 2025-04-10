@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Yahoo Japan Corporation
+# This file is distributed under the same license as the k2hr3_osnl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: k2hr3_osnl \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-10 16:38+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../k2hr3_osnl.rst:2
+msgid "k2hr3\\_osnl package"
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:8
+msgid "k2hr3\\_osnl.cfg module"
+msgstr ""
+
+#: k2hr3_osnl.cfg:1 of
+msgid "Parses a config file and stores configurations."
+msgstr ""
+
+#: k2hr3_osnl.cfg.K2hr3Conf:1 of
+msgid "Bases: :py:class:`~oslo_config.cfg.ConfigOpts`"
+msgstr ""
+
+#: k2hr3_osnl.cfg.K2hr3Conf:1 of
+msgid "Parses and stores configurations."
+msgstr ""
+
+#: k2hr3_osnl.cfg.K2hr3Conf:3 of
+msgid ""
+"This class is a wrapper of oslo_config.cfg.ConfigOpts class. "
+"https://github.com/openstack/oslo.config/blob/master/oslo_config/cfg.py"
+msgstr ""
+
+#: k2hr3_osnl.cfg.K2hr3Conf:6 k2hr3_osnl.endpoint.K2hr3NotificationEndpoint:5
+#: of
+msgid "Simple usage:"
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:16
+msgid "k2hr3\\_osnl.endpoint module"
+msgstr ""
+
+#: k2hr3_osnl.endpoint:1 of
+msgid "An endpoint for the oslo_messaging notification message listener."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint:1 of
+msgid "Bases: :py:class:`object`"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint:1 of
+msgid "An endpoint called by a OpenStack dispatcher."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint:3 of
+msgid "when a filtered notification message arrives, the endpoint calls."
+msgstr ""
+
+#: k2hr3_osnl.K2hr3NotificationEndpoint.conf:1
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.conf:1 of
+msgid "Returns the K2hr3Conf object."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:1 of
+msgid "Notification endpoint in info priority."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:3 of
+msgid ""
+"Notification messages that match the filter’s rules will be passed to the"
+" endpoint’s methods. The oslo_messaging's callback function dispatcher "
+"calls when messages in 'info' priority have arrived."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:7 of
+msgid ""
+"Reference: - "
+"https://docs.openstack.org/oslo.messaging/latest/reference/notification_listener.html"
+" - "
+"https://github.com/openstack/oslo.messaging/blob/master/oslo_messaging/notify/dispatcher.py#L74"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:11 of
+msgid "Note:"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:12 of
+msgid ""
+"This function catches all exceptions to avoid an infinite loop. If this "
+"function hasn't handled unexpected exceptions, the caller(dispatcher) "
+"would have caught them and returned the NotificationResult.REQUEUE to the"
+" message queue server which can cause infinite loop. To avoid the "
+"posibility of inifinite loop, we catches standard exception in this "
+"function."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst
+msgid "Parameters"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:18 of
+msgid "Context of a notification for NotificationFilter."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:20 of
+msgid "Publisher_id of a notification for NotificationFilter"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:22 of
+msgid "Event_type of a notification for NotificationFilter"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:24 of
+msgid "Payload of a notification for NotificationFilter."
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:26 of
+msgid "Metadata of a notification for NotificationFilter."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst
+msgid "Returns"
+msgstr ""
+
+#: k2hr3_osnl.endpoint.K2hr3NotificationEndpoint.info:28 of
+msgid "NotificationResult.HANDLED or NotificationResult.REQUEUE"
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:24
+msgid "k2hr3\\_osnl.exceptions module"
+msgstr ""
+
+#: k2hr3_osnl.exceptions:1 of
+msgid "Exception classes for the oslo_messaging notification message listener."
+msgstr ""
+
+#: k2hr3_osnl.exceptions.K2hr3ConfError:1
+#: k2hr3_osnl.exceptions.K2hr3NotificationEndpointError:1 of
+msgid "Bases: :py:class:`~k2hr3_osnl.exceptions.K2hr3Error`"
+msgstr ""
+
+#: k2hr3_osnl.exceptions.K2hr3ConfError:1 of
+msgid "Raise when failed to instantiate a k2hr3Conf class."
+msgstr ""
+
+#: k2hr3_osnl.exceptions.K2hr3Error:1 of
+msgid "Bases: :py:class:`Exception`"
+msgstr ""
+
+#: k2hr3_osnl.exceptions.K2hr3Error:1 of
+msgid "A base class of various exceptions from k2hr3_osnl package classes."
+msgstr ""
+
+#: k2hr3_osnl.exceptions.K2hr3NotificationEndpointError:1 of
+msgid "Raised when failed to instantiate a K2hr3NotificationEndpoint class."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:32
+msgid "k2hr3\\_osnl.httpresponse module"
+msgstr ""
+
+#: k2hr3_osnl.httpresponse:1 of
+msgid "Response fromthe k2hr3 api."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:40
+msgid "k2hr3\\_osnl.useragent module"
+msgstr ""
+
+#: k2hr3_osnl.useragent:1 of
+msgid "Send HTTP requests to the k2hr3 api."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst:48
+msgid "Module contents"
+msgstr ""
+
+#: k2hr3_osnl:1 of
+msgid "K2hr3 OpenStack Notification message Listener."
+msgstr ""
+
+#: k2hr3_osnl.listen:1 k2hr3_osnl.main:1 of
+msgid "Run a oslo_messaging notification listener for k2hr3."
+msgstr ""
+
+#: k2hr3_osnl.listen:3 of
+msgid ""
+"This function is a library endpoint to start a oslo_messaging "
+"notification listener for k2hr3."
+msgstr ""
+
+#: k2hr3_osnl.listen:6 of
+msgid "endpoint to be called by dispatcher when notification messages arrive."
+msgstr ""
+
+#: k2hr3_osnl.listen:8 of
+msgid "0 if success, otherwise 1."
+msgstr ""
+
+#: ../../k2hr3_osnl.rst
+msgid "Return type"
+msgstr ""
+
+#: k2hr3_osnl.main:3 of
+msgid "You can configure the listener by the config file. Simple usage:"
+msgstr ""
+
+#: k2hr3_osnl.main:6 of
+msgid "$ k2hr3_osnl -c etc/k2hr3_osnl.config"
+msgstr ""
+
+#: k2hr3_osnl.version:1 of
+msgid "Return a version of k2hr3_osnl package."
+msgstr ""
+
+#: k2hr3_osnl.version:3 of
+msgid "version"
+msgstr ""
+

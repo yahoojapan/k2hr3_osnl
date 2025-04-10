@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: k2hr3_osnl \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 16:38+0900\n"
+"POT-Creation-Date: 2025-04-10 16:38+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -17,141 +17,149 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../../HISTORY.rst:3
 msgid "History"
-msgstr ""
+msgstr "歴史"
 
 #: ../../../HISTORY.rst:6
-msgid "1.0.7 (2024-10-15)"
+msgid "1.0.8 (2025-04-10)"
 msgstr ""
 
 #: ../../../HISTORY.rst:8
+msgid "Updates packages"
+msgstr "パッケージを更新"
+
+#: ../../../HISTORY.rst:13
+msgid "1.0.7 (2024-10-15)"
+msgstr ""
+
+#: ../../../HISTORY.rst:15
 msgid "Update the supported interpreters."
 msgstr ""
 
-#: ../../../HISTORY.rst:9
+#: ../../../HISTORY.rst:16
 msgid "Changes the CI settings for PyPI Trusted Publisher."
 msgstr ""
 
-#: ../../../HISTORY.rst:10
+#: ../../../HISTORY.rst:17
 msgid "Fixe the docs."
 msgstr ""
 
-#: ../../../HISTORY.rst:13
+#: ../../../HISTORY.rst:20
 msgid "1.0.6 (2023-05-09)"
 msgstr ""
 
-#: ../../../HISTORY.rst:15 ../../../HISTORY.rst:26
+#: ../../../HISTORY.rst:22 ../../../HISTORY.rst:33
 msgid "Fixes the release build error"
 msgstr ""
 
-#: ../../../HISTORY.rst:18
+#: ../../../HISTORY.rst:25
 msgid "1.0.5 (2023-05-09)"
 msgstr ""
 
-#: ../../../HISTORY.rst:20
+#: ../../../HISTORY.rst:27
 msgid "Fixes the inconsistency of the default python version"
 msgstr ""
 
-#: ../../../HISTORY.rst:21
+#: ../../../HISTORY.rst:28
 msgid "Updates the versions of dependent packages"
 msgstr ""
 
-#: ../../../HISTORY.rst:24
+#: ../../../HISTORY.rst:31
 msgid "1.0.4 (2023-05-09)"
 msgstr ""
 
-#: ../../../HISTORY.rst:27
+#: ../../../HISTORY.rst:34
 msgid "Updates the packaging macros"
 msgstr ""
 
-#: ../../../HISTORY.rst:30
+#: ../../../HISTORY.rst:37
 msgid "1.0.3 (2023-05-08)"
 msgstr ""
 
-#: ../../../HISTORY.rst:32
+#: ../../../HISTORY.rst:39
 msgid "Fixes the build errors"
 msgstr ""
 
-#: ../../../HISTORY.rst:33
+#: ../../../HISTORY.rst:40
 msgid "Sets the default python verison 3.9 in GitHubActions"
 msgstr ""
 
-#: ../../../HISTORY.rst:36
+#: ../../../HISTORY.rst:43
 msgid "1.0.2 (2023-01-13)"
 msgstr ""
 
-#: ../../../HISTORY.rst:38
+#: ../../../HISTORY.rst:45
 msgid "Fixes the environment settings"
 msgstr ""
 
-#: ../../../HISTORY.rst:41
+#: ../../../HISTORY.rst:48
 msgid "1.0.1 (2023-01-13)"
 msgstr ""
 
-#: ../../../HISTORY.rst:43
+#: ../../../HISTORY.rst:50
 msgid "adds Docker image"
 msgstr ""
 
-#: ../../../HISTORY.rst:46
+#: ../../../HISTORY.rst:53
 msgid "1.0.0 (2021-03-26)"
 msgstr ""
 
-#: ../../../HISTORY.rst:48
+#: ../../../HISTORY.rst:55
 msgid "Bump up"
 msgstr ""
 
-#: ../../../HISTORY.rst:51
+#: ../../../HISTORY.rst:58
 msgid "0.9.6 (2020-12-02)"
 msgstr ""
 
-#: ../../../HISTORY.rst:53
+#: ../../../HISTORY.rst:60
 msgid "Adds GitHubActions workflows"
 msgstr ""
 
-#: ../../../HISTORY.rst:56
+#: ../../../HISTORY.rst:63
 msgid "0.9.4 (2020-12-01)"
 msgstr ""
 
-#: ../../../HISTORY.rst:58
+#: ../../../HISTORY.rst:65
 msgid "Changes CI from Travis to GitHub Actions"
 msgstr ""
 
-#: ../../../HISTORY.rst:61
+#: ../../../HISTORY.rst:68
 msgid "0.9.3 (2020-11-30)"
 msgstr ""
 
-#: ../../../HISTORY.rst:63
+#: ../../../HISTORY.rst:70
 msgid "Supports OpenStack Ussuri"
 msgstr ""
 
-#: ../../../HISTORY.rst:66
+#: ../../../HISTORY.rst:73
 msgid "0.9.2 (2019-03-26)"
 msgstr ""
 
-#: ../../../HISTORY.rst:68
+#: ../../../HISTORY.rst:75
 msgid "Fix systemd unitfile for FHS v3"
 msgstr ""
 
-#: ../../../HISTORY.rst:69
+#: ../../../HISTORY.rst:76
 msgid "Fix RPM specfile for the indicated items on Fedora Review No.1663668"
 msgstr ""
 
-#: ../../../HISTORY.rst:72
+#: ../../../HISTORY.rst:79
 msgid "0.9.1 (2019-03-19)"
 msgstr ""
 
-#: ../../../HISTORY.rst:74
+#: ../../../HISTORY.rst:81
 msgid "Fixed systemd unitfile."
 msgstr ""
 
-#: ../../../HISTORY.rst:77
+#: ../../../HISTORY.rst:84
 msgid "0.9.0 (2019-03-06)"
 msgstr ""
 
-#: ../../../HISTORY.rst:79
+#: ../../../HISTORY.rst:86
 msgid "First release on PyPI."
 msgstr ""
 

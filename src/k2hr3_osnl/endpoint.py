@@ -281,7 +281,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
             # message parsing loop.
             LOG.error('invalid payload %s', error)
             return NotificationResult.HANDLED
-        except Exception:
+        except Exception:  # noqa: pylint: disable=broad-exception-caught
             # Unknown exception should be treat as a hard error.
             # We don't raise an exception again since we should avoid infinite
             # message parsing loop.
@@ -298,7 +298,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
                 return NotificationResult.HANDLED
             LOG.info('NotificationResult.REQUEUE %s', params.get('cuk'))
             return NotificationResult.REQUEUE
-        except Exception:
+        except Exception:  # noqa: pylint: disable=broad-exception-caught
             # we should handle exceptions to exit from here properly.
             exc_type, exc_value, exc_traceback = sys.exc_info()
             # Too much? https://docs.python.org/3/library/traceback.html
