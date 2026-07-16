@@ -65,9 +65,9 @@ Ready to contribute? Here's how to set up `k2hr3_osnl` for local development.
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
     $ cd k2hr3_osnl/
-    $ pip3 install pipenv
-    $ python3 -m pipenv install -dev --python /path/to/python3
-    $ pipenv shell
+    $ python3 -m venv venv
+    $ source venv/bin/activate  # On Windows: venv\Scripts\activate
+    $ pip install -e .[dev]
 
 4. Create a branch for local development::
 

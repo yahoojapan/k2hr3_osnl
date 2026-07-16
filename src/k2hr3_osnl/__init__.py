@@ -21,6 +21,25 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
+import argparse
+import logging
+from logging.handlers import TimedRotatingFileHandler
+from logging import StreamHandler
+from pathlib import Path
+import sys
+import time
+from importlib.metadata import version as _version
+from importlib.metadata import PackageNotFoundError
+
+import oslo_config  # type: ignore
+import oslo_messaging  # type: ignore
+
+from k2hr3_osnl.cfg import K2hr3Conf
+from k2hr3_osnl.exceptions import K2hr3Error
+from k2hr3_osnl.exceptions import K2hr3ConfError
+from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError
+from k2hr3_osnl.endpoint import K2hr3NotificationEndpoint
+
 __all__ = [
     'K2hr3Conf',
     'K2hr3ConfError',
@@ -31,24 +50,11 @@ __all__ = [
     'version',
 ]
 __author__ = 'Hirotaka Wakabayashi <hiwakaba@yahoo-corp.jp>'
-__version__ = '1.0.8'
 
-import argparse
-import logging
-from logging.handlers import TimedRotatingFileHandler
-from logging import StreamHandler
-from pathlib import Path
-import sys
-import time
-
-import oslo_config  # type: ignore
-import oslo_messaging  # type: ignore
-
-from k2hr3_osnl.cfg import K2hr3Conf
-from k2hr3_osnl.exceptions import K2hr3Error
-from k2hr3_osnl.exceptions import K2hr3ConfError
-from k2hr3_osnl.exceptions import K2hr3NotificationEndpointError
-from k2hr3_osnl.endpoint import K2hr3NotificationEndpoint
+try:
+    __version__ = _version('k2hr3_osnl')
+except PackageNotFoundError:
+    __version__ = '1.0.8'  # Fallback version
 
 LOG = logging.getLogger(__name__)
 
@@ -213,6 +219,7 @@ def listen(endpoints: list[K2hr3NotificationEndpoint]) -> int:
                       my_endpoint.conf)
             return 1
 
+    assert my_endpoint is not None
     conf = my_endpoint.conf
     assert isinstance(conf, K2hr3Conf)
 

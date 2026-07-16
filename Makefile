@@ -49,9 +49,7 @@ help:
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 init:
-	python3 -m pip install pipenv
-	pipenv install --dev
-	pipenv graph
+	python3 -m pip install -e .[dev]
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 

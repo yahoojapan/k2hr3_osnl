@@ -205,9 +205,12 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
 
         try:
             agent = _K2hr3UserAgent(self._conf)
-            agent.instance_id = params.get('cuk', None)
-            if params.get('ips', None):
-                agent.ips = params.get('ips', None)
+            cuk = params.get('cuk')
+            if isinstance(cuk, str):
+                agent.instance_id = cuk
+            ips = params.get('ips')
+            if ips is not None:
+                agent.ips = ips
             if agent.send():
                 LOG.debug('ok sent. %s code, %s', agent.instance_id,
                           agent.code)
@@ -234,7 +237,7 @@ class K2hr3NotificationEndpoint:  # public class instantiated in main
             raise
 
     # yapf: disable
-    def info(self, context: dict[str, object],  # pylint: disable=unused-argument,too-many-positional-arguments  # noqa
+    def info(self, context: dict[str, object],  # pylint: disable=unused-argument  # noqa
              publisher_id: str, event_type: str,
              payload: dict[str, object], metadata: dict[str, object]):  # pylint: disable=unused-argument  # noqa
         """Notification endpoint in info priority.

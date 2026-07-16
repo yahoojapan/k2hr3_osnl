@@ -414,7 +414,7 @@ class _K2hr3UserAgent:
             val = getattr(self, attr)
             if val:
                 attrs.append((attr, repr(val)))
-        values = ', '.join(['%s=%s' % i for i in attrs])
+        values = ', '.join([f'{k}={v}' for k, v in attrs])
         return '<_K2hr3UserAgent ' + values + '>'
 
     def __str__(self):

@@ -58,7 +58,6 @@ jobs=1
 
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
-suggestion-mode=yes
 
 # Allow loading of arbitrary C extensions. Extensions are imported into the
 # active Python interpreter and may run arbitrary code.
@@ -432,6 +431,9 @@ max-spelling-suggestions=2
 
 # Maximum number of arguments for function / method
 max-args=10
+
+# Maximum number of positional arguments for function / method
+max-positional-arguments=6
 
 # Maximum number of locals for function / method body
 max-locals=25

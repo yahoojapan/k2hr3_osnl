@@ -22,7 +22,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "k2hr3_osnl"
-dynamic = ["version"]
+version = "1.0.8"
 requires-python = ">=3.9"
 authors = [
   {name = "Hirotaka Wakabayashi", email = "hiwakaba@lycorp.co.jp"},
@@ -48,8 +48,33 @@ classifiers = [
   'Programming Language :: Python :: 3.9',
 ]
 dependencies = [
-    'oslo.config>=5.2.0',
-    'oslo.messaging>=5.17.1',
+    'build>=0.10.0',
+    'oslo.config>=9.1.1',
+    'oslo.messaging>=14.2.0',
+]
+
+[project.optional-dependencies]
+dev = [
+    'coverage',
+    'flake8',
+    'flake8-docstrings',
+    'pep8-naming',
+    'pycodestyle',
+    'mccabe',
+    'sphinx-autoapi',
+    'sphinx-intl',
+    'sphinx-rtd-theme',
+    'sphinx',
+    'watchdog',
+    'wheel',
+    'twine',
+    'pylint',
+    'typed-ast',
+    'astroid',
+    'mypy',
+    'collective.checkdocs',
+    'tomli',
+    'dill',
 ]
 
 [project.scripts]
